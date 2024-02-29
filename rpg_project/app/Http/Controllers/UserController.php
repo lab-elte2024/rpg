@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    // Az összes felhasználó lekérdezése és megjelenítése
+
     public function index()
     {
 
 
-        $users = User::all();
+        $users = DB::table('users')->select('username')->where('username','=','valaki')->get();
+
         return view('users', compact('users'));
     }
 }
