@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('armors', function (Blueprint $table) {
@@ -17,15 +15,11 @@ return new class extends Migration
             $table->integer('value');
             $table->integer('price');
             $table->integer('rarity');
-            // Egyéb oszlopok
-            // $table->integer('oszlop_6');
+            $table->integer('classID');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('armors');

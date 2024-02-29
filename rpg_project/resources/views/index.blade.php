@@ -7,8 +7,8 @@
     <h1>Felhasználók listája</h1>
 
     <ul>
-        @foreach ($users as $user)
-            <li>{{ $user->username }}</li>
+        @foreach ($weapons as $weapon)
+            <li>{{ $weapon->name }}</li>
         @endforeach
     </ul>
 </body>

@@ -11,5 +11,5 @@ class Armors extends Model
 
     protected $table = 'armors';
 
-    protected $fillable = ['name', 'value', 'price', 'rarity'];
+    protected $fillable = ['name', 'value', 'price', 'rarity','classID'];
 }
