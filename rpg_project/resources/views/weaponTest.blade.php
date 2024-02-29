@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Felhasználók listája</title>
+    <title>Fegyverek listája</title>
 </head>
 <body>
-    <h1>Felhasználók listája</h1>
+
+    <h1>Fegyverek listája</h1>
 
     <ul>
         @foreach ($weapons as $weapon)
-            <li>{{ $weapon->name }}</li>
+            <li>{{ $weapon->getRarity($weapon->rarity) }}</li>
         @endforeach
     </ul>
 </body>
