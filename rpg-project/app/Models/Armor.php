@@ -5,11 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Armors extends Model
+class Armor extends Model
 {
     use HasFactory;
 
     protected $table = 'armors';
 
-    protected $fillable = ['name', 'value', 'price', 'rarity','classID'];
+    protected $fillable = [
+        'name',
+        'armor',
+        'lvl',
+        'pictureID',
+        'classID'
+    ];
+
+
 }

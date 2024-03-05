@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Classes extends Model
 {
     use HasFactory;
-    protected $table = 'class';
 
-    protected $fillable = ['name', 'attack','defense','speed'];
+    protected $table = 'classes';
 
-
+    protected $fillable = [
+        'name',
+        'attack',
+        'defense',
+        'speed',
+        'pictureID'
+    ];
 
 }

@@ -4,12 +4,11 @@
     <title>Fegyverek listája</title>
 </head>
 <body>
-
     <h1>Fegyverek listája</h1>
 
     <ul>
         @foreach ($weapons as $weapon)
-            <li>{{ $weapon->getRarity($weapon->rarity) }}</li>
+            <li>{{ $weapon->name }}</li>
         @endforeach
     </ul>
 </body>

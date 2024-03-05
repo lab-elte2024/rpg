@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Weapons extends Model
+class Weapon extends Model
 {
     use HasFactory;
 
     protected $table = 'weapons';
 
-    protected $fillable = ['classID', 'name','min_damage','max_damage','rarity','price','is_purchasable','pictureID'];
+    protected $fillable = ['classID', 'name', 'min_damage', 'max_damage', 'rarity', 'price', 'is_purchasable', 'pictureID'];
 
-    public function getRarity($rarity)
+
+    public function handleRarity($rarity)
     {
-
         if ($rarity == 1) {
             return 'Common';
         } elseif ($rarity == 2) {
@@ -26,7 +26,6 @@ class Weapons extends Model
             return 'Unknown';
         }
     }
-
-
-
 }
+
+

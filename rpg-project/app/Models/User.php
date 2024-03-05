@@ -5,8 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Player_Inventory extends Model
+class User extends Authenticatable
 {
+
     use HasFactory;
-    protected $table = 'player_inventory';
+
+    protected $table = 'users';
+
+    protected $filable =  [
+        'username',
+        'password'
+    ];
+
+
+
 }
