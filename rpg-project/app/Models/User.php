@@ -14,9 +14,12 @@ class User extends Authenticatable
 
     protected $filable =  [
         'username',
-        'password'
+        'password',
     ];
 
+    protected $hidden = [
+        'password',
+    ];
 
 
 }

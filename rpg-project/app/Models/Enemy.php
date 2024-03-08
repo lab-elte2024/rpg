@@ -19,4 +19,13 @@ class Enemy extends Model
         'pictureID'
     ];
 
+
+    public function attack(){
+
+    }
+
+    public function deffend(){
+
+    }
+
 }

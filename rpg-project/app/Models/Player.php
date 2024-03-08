@@ -26,4 +26,13 @@ class Player extends Model
 
 
 
+    public function attack(){
+
+    }
+
+    public function deffend(){
+
+    }
+
+
 }
