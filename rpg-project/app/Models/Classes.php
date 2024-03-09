@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Classes extends Model
 {
@@ -18,5 +19,13 @@ class Classes extends Model
         'speed',
         'pictureID'
     ];
+
+    public function getClassByID($id){
+
+        $name = DB::table('classes')->where('ID',$id)->get();
+        return $name;
+
+    }
+
 
 }

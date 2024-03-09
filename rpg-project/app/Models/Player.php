@@ -11,6 +11,11 @@ class Player extends Model
 
     protected $table = 'players';
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userID');
+    }
+
     protected $fillable = [
         'name',
         'classID',
@@ -26,7 +31,11 @@ class Player extends Model
 
 
 
-    public function attack(){
+    public function attack($attack,$weapon_damage,$speed){
+
+        $dmg = $attack + $weapon_damage + ($speed/2);
+
+        return $dmg;
 
     }
 

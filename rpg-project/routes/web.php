@@ -10,6 +10,9 @@ Route::get('/', function () {
     return view('menu');
 });
 
+Route::get('/menu', function () {
+    return view('menu');
+});
 
 /////////////////////////---- Login ----/////////////////////////////
 Route::get('/login', function () {
@@ -20,9 +23,9 @@ Route::get('/registration', function () {
     return view('auth.register');
 });
 
-Route::get('/register', [LoginController::class, 'register']);
+Route::post('/register', [LoginController::class, 'register'])->name('register');
 
-Route::get('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/logout', [LoginController::class, 'logout']);
 
@@ -35,7 +38,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/weapons', [GameController::class, 'index']);
 
 
-Route::get('/newgame', [GameController::class, 'getClasses',]);
+Route::get('/newgame/{id}', [GameController::class, 'createPlayer'])->name('newgame');
 
 Route::get('/continue', function () {
     return view('mkplayer');

@@ -18,11 +18,9 @@ class GameController extends Controller
         return view('weapons', compact('weapons')); // Nézet átadása a fegyverek listájával
     }
 
-    public function getClasses(){
-        $ID = 1;
-        $classes = DB::table('classes')->where('ID',$ID)->get();
-
-        return view('mkplayer', ['classes' => $classes]);
+    public function createPlayer($id){
+        $id;
+        return view('mkplayer');
     }
 
 }

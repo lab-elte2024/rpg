@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Armor extends Model
 {
     use HasFactory;
 
-    protected $table = 'armors';
+    protected $table = 'armor';
 
     protected $fillable = [
         'name',
@@ -18,6 +19,13 @@ class Armor extends Model
         'pictureID',
         'classID'
     ];
+
+    public function getArmorByClass($class_id){
+
+        $name = DB::table('armor')->where('classID',$class_id)->where('lvl','1')->get();
+        return $name;
+
+    }
 
 
 }
