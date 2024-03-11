@@ -10,11 +10,10 @@
 <body>
 
     @php
-        use Illuminate\Support\Facades\DB;
         $classes = new App\Models\Classes();
         $weapons = new App\Models\Weapon();
         $armors = new App\Models\Armor();
-        $playerCtrl =  new  App\Http\Controllers\PlayerController();
+
         $data = $classes::paginate(1);
     @endphp
 
@@ -24,33 +23,34 @@
         </div>
 
         <div class="div2">
+            @php
+                //gomb helye
+            @endphp
             {{ $data-> links('vendor.pagination.left')}}
         </div>
 
+
+
         <div class="div3">
+            @php
+                //gomb helye
+            @endphp
             {{ $data-> links('vendor.pagination.right')}}
         </div>
 
         <div class="div4">
+            <form action="" method="POST">
 
-            <form action="/mk_player" method="POST">
-                @csrf
                     @foreach($data as $d)
                         @php
-
-                           $classID =  $d->ID;
-                           $weapon = $weapons->getWeaponByClass($classID);
-                           $armor = $armors->getArmorByClass($classID);
+                           $class_id =  $d->ID;
+                           $weapon = $weapons->getWeaponByClass($class_id);
+                           $armor = $armors->getArmorByClass($class_id);
 
                             $name = $d->name;
 
-                            $wid = 0;
-                            $aid = 0;
-
-
                         @endphp
-                        <input type="hidden" value={{$classID}} name="classID">
-                        <input type="hidden" value='1' name="userID">
+
                         Kasztod:{{ $name }}<br>
                         Támadás:{{ $d->attack }}<br>
                         Védekezés:{{ $d->defense }}<br>
@@ -61,33 +61,19 @@
                     @endforeach
 
                     @foreach ($weapon as $w)
-                        @php
-                            $wid = $w->ID;
-                        @endphp
                         Fegyvered:{{ $w->name }}
                     @endforeach
 
                     @foreach ($armor as $a)
-                        @php
-                            $aid = $a->ID;
-
-                        @endphp
                         Páncélod:{{ $a->name }}<br>
                     @endforeach
 
                     <label for="name">Neved:</label>
                 <input type="text" name="name"><br>
                 <input type="submit" value="Létrehoz">
-
-
-                @php
-                    //itt kell meghíni az mkplayer ffüggvényt
-                @endphp
-
             </form>
         </div>
     </div>
-
 
 
 

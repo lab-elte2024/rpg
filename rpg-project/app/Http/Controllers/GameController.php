@@ -18,8 +18,7 @@ class GameController extends Controller
         return view('weapons', compact('weapons')); // Nézet átadása a fegyverek listájával
     }
 
-    public function createPlayer($id){
-        $id;
+    public function createPlayer(){
         return view('mkplayer');
     }
 

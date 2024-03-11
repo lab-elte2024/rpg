@@ -4,35 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\RedirectResponse;
 
 class PlayerController extends Controller
 {
     //
 
     public function create($data){
+
+        $classData = DB::table('classes')->where('ID', $data['classID'])->first();
+
+
+
+
         return Player::create([
             'name' => $data['name'],
             'classID' => $data['classID'],
-            'attack' => $data['attack'],
-            'defense' => $data['defense'],
-            'speed' => $data['speed'],
-            'hp' => $data['hp'],
-            'lvl' => $data['lvl'],
-            'xp_count' => $data['xp_count'],
-            'userID' => $data['userID']
+            'attack' => $classData->attack,
+            'defense' => $classData->defense,
+            'speed' => $classData->speed,
+            'userID' => 1
           ]);
     }
 
-    public function dasd(){
-        return "";
-    }
 
-    public function mk_player(Request $request): RedirectResponse{
+
+
+    public function mk_player(Request $request) {
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("menu")->withSuccess('Great! You have Successfully loggedin');
-        //
+        return redirect("menu");
     }
+
 
 }

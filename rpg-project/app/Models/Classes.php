@@ -27,5 +27,12 @@ class Classes extends Model
 
     }
 
+    public function getClasses(){
+
+        $data = DB::table('classes')->get();
+        return $data;
+
+    }
+
 
 }

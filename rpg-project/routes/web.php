@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlayerController;
 
 
 
 Route::get('/', function () {
-    return view('menu');
+    return view('blacksmith');
 });
 
 Route::get('/menu', function () {
@@ -38,10 +39,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/weapons', [GameController::class, 'index']);
 
 
-Route::get('/newgame/{id}', [GameController::class, 'createPlayer'])->name('newgame');
+Route::get('/newgame', [GameController::class, 'createPlayer'])->name('newgame');
 
-Route::get('/continue', function () {
-    return view('mkplayer');
-});
+
+Route::post('/mk_player', [PlayerController::class, 'mk_player']);
+
 
 ////////////////////////////
+
