@@ -13,11 +13,15 @@ Route::get('/stat', function () {
 
 
 Route::get('/', function () {
-    return view('blacksmith');
+    return view('village');
 });
 
 Route::get('/menu', function () {
     return view('menu');
+});
+
+Route::get('/blacksmith', function () {
+    return view('blacksmith');
 });
 
 /////////////////////////---- Login ----/////////////////////////////
@@ -31,7 +35,7 @@ Route::get('/registration', function () {
 
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login'])->name('log');
 
 Route::get('/logout', [LoginController::class, 'logout']);
 
