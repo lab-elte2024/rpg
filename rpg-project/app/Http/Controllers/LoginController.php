@@ -59,6 +59,10 @@ class LoginController extends Controller
 
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $getID = DB::table('users')->where('username', $user->username)->value('ID');
+            session(['ID' => $getID, 'username' => $user->username]);
+
             return redirect()->intended('menu')
                         ->withSuccess('You have Successfully loggedin');
         }

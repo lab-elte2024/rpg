@@ -16,11 +16,13 @@
         $armors = new App\Models\Armor();
         $playerCtrl =  new  App\Http\Controllers\PlayerController();
         $data = $classes::paginate(1);
+        $user_id = session('ID');
     @endphp
 
     <div class="parent">
         <div class="div1">
             <h1>cím</h1>
+
         </div>
 
         <div class="div2">
@@ -50,7 +52,7 @@
 
                         @endphp
                         <input type="hidden" value={{$classID}} name="classID">
-                        <input type="hidden" value='1' name="userID">
+                        <input type="hidden" value={{$user_id}} name="userID">
                         Kasztod:{{ $name }}<br>
                         Támadás:{{ $d->attack }}<br>
                         Védekezés:{{ $d->defense }}<br>
@@ -87,6 +89,7 @@
             </form>
         </div>
     </div>
+
 
 
 
