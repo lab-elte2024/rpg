@@ -7,6 +7,11 @@ use App\Http\Controllers\PlayerController;
 
 
 
+Route::get('/stat', function () {
+    return view('stat');
+});
+
+
 Route::get('/', function () {
     return view('blacksmith');
 });
