@@ -25,10 +25,17 @@ class Player extends Model
         'defense',
         'speed',
         'hp',
-        //'hp_max',
         'lvl',
         'xp_count',
-        'userID'
+        'userID',
+        'maxHP',
+        'points',
+        'money',
+        'weaponID',
+        'armorID',
+        'skill1_ID',
+        'skill2_ID',
+        'skill3_ID'
     ];
 
     public function getByUserID($id){

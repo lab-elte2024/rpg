@@ -26,18 +26,7 @@ class Weapon extends Model
         return rand($min_damage,$max_damage);
     }
 
-    public function handleRarity($rarity)
-    {
-        if ($rarity == 1) {
-            return 'Common';
-        } elseif ($rarity == 2) {
-            return 'Rare';
-        } elseif ($rarity == 3) {
-            return 'Epic';
-        } else {
-            return 'Unknown';
-        }
-    }
+
 }
 
 

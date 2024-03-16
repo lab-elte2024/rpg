@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
+use App\Models\PlayerInventory;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RedirectResponse;
 
@@ -24,9 +25,15 @@ class PlayerController extends Controller
             'attack' => $classData->attack,
             'defense' => $classData->defense,
             'speed' => $classData->speed,
-            'userID' => 1
+            'weaponID' => $data['weaponID'],
+            'armorID' => $data['armorID'],
+            'userID' => $data['userID'],
+            'skill1_ID' => 1,
+            'skill2_ID' => 1,
+            'skill3_ID' => 1,
           ]);
     }
+
 
 
 

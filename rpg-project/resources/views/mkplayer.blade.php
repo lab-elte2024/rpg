@@ -66,6 +66,7 @@
                         @php
                             $wid = $w->ID;
                         @endphp
+                        <input type="hidden" value={{$wid}} name="weaponID">
                         Fegyvered:{{ $w->name }}
                     @endforeach
 
@@ -74,17 +75,13 @@
                             $aid = $a->ID;
 
                         @endphp
+                        <input type="hidden" value={{$aid}} name="armorID">
                         Páncélod:{{ $a->name }}<br>
                     @endforeach
 
                     <label for="name">Neved:</label>
                 <input type="text" name="name"><br>
                 <input type="submit" value="Létrehoz">
-
-
-                @php
-                    //itt kell meghíni az mkplayer ffüggvényt
-                @endphp
 
             </form>
         </div>
