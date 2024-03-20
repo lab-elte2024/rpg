@@ -56,12 +56,14 @@ class Armor extends Model
 
         $id = $data['playerID'];
         $armorID = $data['armorID'];
+        $price = $data['price'];
+        $money = $data['money'];
 
-
+        if($price <= $money){
         $armor = DB::table('players')
         ->where('ID',$id)
         ->update(['armorID' => $armorID]);
-
+        }
         return redirect('blacksmith');
     }
 }

@@ -24,6 +24,9 @@
 
     $next_weapon = $weapons->getNextWeapon($current_player->classID,$weapon->lvl)->first();
     $next_armor = $armors->getNextArmor($current_player->classID,$armor->lvl)->first();
+
+
+
     @endphp
 
 
@@ -43,8 +46,10 @@
             <form action="/upgrade_weapon" method="POST">
                 @csrf
                 <input type="hidden" value="{{$next_weapon->ID}}" name="weaponID">
+                <input type="hidden" value="{{$next_weapon->price}}" name="price">
                 <input type="hidden" value="{{$current_player->ID}}" name="playerID">
-                <input type="submit" value="Küldés">
+                <input type="hidden" value="{{$current_player->money}}" name="money">
+                <input type="submit" value="Upgrade">
             </form>
         @endif
     </div>
@@ -64,9 +69,11 @@
             -Fejleszt->(Költség: {{$next_armor->price}})
             <form action="/upgrade_armor" method="POST">
                 @csrf
+                <input type="hidden" value="{{$next_armor->price}}" name="price">
                 <input type="hidden" value="{{$next_armor->ID}}" name="armorID">
                 <input type="hidden" value="{{$current_player->ID}}" name="playerID">
-                <input type="submit" value="Küldés">
+                <input type="hidden" value="{{$current_player->money}}" name="money">
+                <input type="submit" value="Upgrade">
             </form>
         @endif
     </div>
@@ -82,12 +89,6 @@
 
 
 
-    <script>
-        $lvl = $next_weapon->lvl;
-        if($lvl == 4){
-            document.getElementById("upgrade_weapon").disabled = true;
-        }
-    <scpript>
 
 </body>
 

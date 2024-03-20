@@ -68,12 +68,17 @@ class Weapon extends Model
 
         $id = $data['playerID'];
         $weaponID = $data['weaponID'];
+        $price = $data['price'];
+        $money = $data['money'];
 
 
-        $weapon = DB::table('players')
-        ->where('ID',$id)
-        ->update(['weaponID' => $weaponID]);
+        if($price <= $money){
+            $weapon = DB::table('players')
+            ->where('ID',$id)
+            ->update(['weaponID' => $weaponID]);
+        }else{
 
+        }
 
 
         return redirect('blacksmith');
