@@ -28,7 +28,7 @@ grid-row-gap: 4px;
 </head>
 <body>
     <div class="parent">
-        <div class="div1"> blacksmith</div>
+        <div class="div1"><a href="blacksmith">blacksmith</a></div>
         <div class="div2"> tavern</div>
         <div class="div3"> quests</div>
         <div class="div4"> -random house-</div>

@@ -13,7 +13,7 @@ class GameController extends Controller
     //sablon ne töröld
     public function index(){
 
-        $weapons = Weapon::all(); // Fegyverek lekérése az adatbázisból
+        $weapons = Weapon::where('classID',1)->get(); // Fegyverek lekérése az adatbázisból
 
         return view('weapons', compact('weapons')); // Nézet átadása a fegyverek listájával
     }

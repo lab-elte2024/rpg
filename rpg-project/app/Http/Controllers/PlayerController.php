@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
-use App\Models\PlayerInventory;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RedirectResponse;
 
@@ -15,8 +15,6 @@ class PlayerController extends Controller
     public function create($data){
 
         $classData = DB::table('classes')->where('ID', $data['classID'])->first();
-
-
 
 
         return Player::create([
@@ -42,7 +40,7 @@ class PlayerController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("menu");
+        return redirect("village");
     }
 
 

@@ -20,6 +20,11 @@ class Classes extends Model
         'pictureID'
     ];
 
+    public function Weapon()
+    {
+        return $this->hasOne(Weapon::class, 'classID');
+    }
+
     public function getClassByID($id){
 
         $name = DB::table('classes')->where('ID',$id)->get();

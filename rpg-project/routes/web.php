@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlayerController;
+use App\Models\Weapon;
+use App\Models\Armor;
 
 
 
@@ -13,7 +15,11 @@ Route::get('/stat', function () {
 
 
 Route::get('/', function () {
-    return view('village');
+    return view('village.village');
+});
+
+Route::get('/village', function () {
+    return view('village.village');
 });
 
 Route::get('/menu', function () {
@@ -21,7 +27,7 @@ Route::get('/menu', function () {
 });
 
 Route::get('/blacksmith', function () {
-    return view('blacksmith');
+    return view('village.blacksmith');
 });
 
 /////////////////////////---- Login ----/////////////////////////////
@@ -53,6 +59,13 @@ Route::get('/newgame', [GameController::class, 'createPlayer'])->name('newgame')
 
 Route::post('/mk_player', [PlayerController::class, 'mk_player']);
 
-
 ////////////////////////////
 
+
+////////////--- Upgrade----////////////
+
+Route::post('/upgrade_weapon', [Weapon::class, 'upgrade']);
+
+Route::post('/upgrade_armor', [Armor::class, 'upgrade']);
+
+//////////////////////////
