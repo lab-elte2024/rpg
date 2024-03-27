@@ -25,14 +25,21 @@ CREATE TABLE IF NOT EXISTS `armor` (
   `lvl` int(11) DEFAULT NULL,
   `pictureID` int(11) DEFAULT NULL,
   `classID` int(11) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.armor: ~0 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.armor: ~9 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `armor` DISABLE KEYS */;
-REPLACE INTO `armor` (`ID`, `name`, `armor`, `lvl`, `pictureID`, `classID`) VALUES
-	(1, 'Egyszerű páncél', NULL, NULL, NULL, 1),
-	(2, 'Vértezett páncél', NULL, NULL, NULL, 1);
+REPLACE INTO `armor` (`ID`, `name`, `armor`, `lvl`, `pictureID`, `classID`, `price`) VALUES
+	(1, 'Egyszerű páncél', NULL, 1, NULL, 1, 0),
+	(2, 'Vértezett páncél', NULL, 2, NULL, 1, 100),
+	(3, 'Nehéz páncél', NULL, 3, NULL, 1, 200),
+	(4, 'Sétáló Erőd', NULL, 4, NULL, 1, 300),
+	(5, 'musketer lvl1', NULL, NULL, NULL, 2, NULL),
+	(6, 'musketer lvl2', NULL, NULL, NULL, 2, NULL),
+	(7, 'musketer lvl3', NULL, NULL, NULL, 2, NULL),
+	(8, 'musketer lvl4', NULL, NULL, NULL, 2, NULL);
 /*!40000 ALTER TABLE `armor` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. battle_quests
@@ -71,6 +78,7 @@ REPLACE INTO `classes` (`ID`, `name`, `attack`, `defense`, `speed`, `pictureID`)
 CREATE TABLE IF NOT EXISTS `enemies` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `hp` int(11) NOT NULL,
   `attack_power` int(11) NOT NULL,
   `defense_power` int(11) NOT NULL,
   `speed` int(11) NOT NULL,
@@ -79,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `enemies` (
   CONSTRAINT `enemies_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `battle_quests` (`enemyID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.enemies: ~0 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.enemies: ~1 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 
@@ -99,52 +107,44 @@ CREATE TABLE IF NOT EXISTS `missions` (
 /*!40000 ALTER TABLE `missions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `missions` ENABLE KEYS */;
 
--- Struktúra mentése tábla rpg_database. playeritems
-CREATE TABLE IF NOT EXISTS `playeritems` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `playerID` int(11) DEFAULT NULL,
-  `weaponID` int(11) DEFAULT NULL,
-  `armorID` int(11) DEFAULT NULL,
-  `skill1_ID` int(11) DEFAULT NULL,
-  `skill2_ID` int(11) DEFAULT NULL,
-  `skill3_ID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `playerID_weaponID_armorID_skill1_ID_skill2_ID_skill3_ID` (`playerID`,`weaponID`,`armorID`,`skill1_ID`,`skill2_ID`,`skill3_ID`),
-  KEY `FK_playeritems_weapons` (`weaponID`),
-  KEY `FK_playeritems_armor` (`armorID`),
-  KEY `FK_playeritems_skilss` (`skill1_ID`),
-  KEY `FK_playeritems_skilss_2` (`skill2_ID`),
-  KEY `FK_playeritems_skilss_3` (`skill3_ID`),
-  CONSTRAINT `FK_playeritems_armor` FOREIGN KEY (`armorID`) REFERENCES `armor` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_playeritems_players` FOREIGN KEY (`playerID`) REFERENCES `players` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_playeritems_skilss` FOREIGN KEY (`skill1_ID`) REFERENCES `skills` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_playeritems_skilss_2` FOREIGN KEY (`skill2_ID`) REFERENCES `skills` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_playeritems_skilss_3` FOREIGN KEY (`skill3_ID`) REFERENCES `skills` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_playeritems_weapons` FOREIGN KEY (`weaponID`) REFERENCES `weapons` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Tábla adatainak mentése rpg_database.playeritems: ~0 rows (hozzávetőleg)
-/*!40000 ALTER TABLE `playeritems` DISABLE KEYS */;
-/*!40000 ALTER TABLE `playeritems` ENABLE KEYS */;
-
 -- Struktúra mentése tábla rpg_database. players
 CREATE TABLE IF NOT EXISTS `players` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `class` varchar(255) NOT NULL,
-  `attack_power` int(11) NOT NULL,
-  `defense_power` int(11) NOT NULL,
+  `classID` int(11) NOT NULL DEFAULT 0,
+  `attack` int(11) NOT NULL,
+  `defense` int(11) NOT NULL,
   `speed` int(11) NOT NULL,
   `hp` int(11) DEFAULT 100,
-  `level` int(11) DEFAULT 1,
+  `lvl` int(11) DEFAULT 1,
   `xp_count` int(11) DEFAULT 0,
   `userID` int(11) DEFAULT NULL,
+  `maxHP` int(11) NOT NULL DEFAULT 100,
+  `points` int(11) NOT NULL DEFAULT 0,
+  `money` int(11) NOT NULL DEFAULT 0,
+  `weaponID` int(11) NOT NULL,
+  `armorID` int(11) NOT NULL,
+  `skill1_ID` int(11) NOT NULL,
+  `skill2_ID` int(11) NOT NULL,
+  `skill3_ID` int(11) NOT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
-  KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `userID` (`userID`),
+  KEY `weaponID_armorID_skill1_ID_skill2_ID_skill3_ID` (`weaponID`,`armorID`,`skill1_ID`,`skill2_ID`,`skill3_ID`),
+  KEY `FK_players_armor` (`armorID`),
+  KEY `FK_players_skills` (`skill1_ID`),
+  KEY `FK_players_skills_2` (`skill2_ID`),
+  KEY `FK_players_skills_3` (`skill3_ID`),
+  CONSTRAINT `FK_players_armor` FOREIGN KEY (`armorID`) REFERENCES `armor` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_players_skills` FOREIGN KEY (`skill1_ID`) REFERENCES `skills` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_players_skills_2` FOREIGN KEY (`skill2_ID`) REFERENCES `skills` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_players_skills_3` FOREIGN KEY (`skill3_ID`) REFERENCES `skills` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_players_weapons` FOREIGN KEY (`weaponID`) REFERENCES `weapons` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.players: ~0 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.players: ~1 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
+REPLACE INTO `players` (`ID`, `name`, `classID`, `attack`, `defense`, `speed`, `hp`, `lvl`, `xp_count`, `userID`, `maxHP`, `points`, `money`, `weaponID`, `armorID`, `skill1_ID`, `skill2_ID`, `skill3_ID`) VALUES
+	(24, 'Centurion', 1, 6, 8, 4, 100, 1, 0, 25, 100, 0, 0, 1, 1, 1, 1, 1);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. riddles
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.skills: ~0 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.skills: ~3 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `skills` DISABLE KEYS */;
 REPLACE INTO `skills` (`ID`, `name`, `damage`, `cooldown`, `pictureID`, `level_req`, `is_healing`) VALUES
 	(1, 'Csapás', NULL, NULL, NULL, NULL, NULL),
@@ -204,12 +204,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(256) DEFAULT NULL,
   `password` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  CONSTRAINT `FK_users_players` FOREIGN KEY (`ID`) REFERENCES `players` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.users: ~1 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.users: ~2 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+REPLACE INTO `users` (`ID`, `username`, `password`) VALUES
+	(9, 'valaki', '$2y$12$Rl42bcCTX/P3N9mxOKpt9.I/s839pPD0.ZXLHrsJdFGtJZtVlzlXO'),
+	(25, 'asd', '$2y$12$wRBSiKg9wUaMaWSkhm8w4eq7YGvcZAjitmdKS/rm0U4eIZOK/2rkS');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. weapons
@@ -221,25 +223,27 @@ CREATE TABLE IF NOT EXISTS `weapons` (
   `lvl` int(11) DEFAULT NULL,
   `pictureID` int(11) DEFAULT NULL,
   `classID` int(11) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `classID` (`classID`),
   CONSTRAINT `FK_weapons_classes` FOREIGN KEY (`classID`) REFERENCES `classes` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.weapons: ~10 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.weapons: ~13 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `weapons` DISABLE KEYS */;
-REPLACE INTO `weapons` (`ID`, `name`, `min_attack`, `max_attack`, `lvl`, `pictureID`, `classID`) VALUES
-	(1, 'Egyszerű kard', NULL, NULL, NULL, NULL, 1),
-	(2, 'Élezett kard', NULL, NULL, NULL, NULL, 1),
-	(3, 'Acél kard', NULL, NULL, NULL, NULL, 1),
-	(4, '--epic kard --', NULL, NULL, NULL, NULL, 1),
-	(5, '-- legendás kard --', NULL, NULL, NULL, NULL, 1),
-	(6, 'Egyszerű muskéta', NULL, NULL, NULL, NULL, 2),
-	(7, 'Kalibrált muskéta', NULL, NULL, NULL, NULL, 2),
-	(8, 'Precíz muskéta', NULL, NULL, NULL, NULL, 2),
-	(9, 'Karabély', NULL, NULL, NULL, NULL, 2),
-	(10, '--legendás puska --', NULL, NULL, NULL, NULL, 2),
-	(11, 'Tőr és Pisztoly', NULL, NULL, NULL, NULL, 3);
+REPLACE INTO `weapons` (`ID`, `name`, `min_attack`, `max_attack`, `lvl`, `pictureID`, `classID`, `price`) VALUES
+	(1, 'Egyszerű kard', NULL, NULL, 1, NULL, 1, 0),
+	(2, 'Élezett kard', NULL, NULL, 2, NULL, 1, 100),
+	(3, 'Acél kard', NULL, NULL, 3, NULL, 1, 200),
+	(4, '--epic kard --', NULL, NULL, 4, NULL, 1, 300),
+	(6, 'Egyszerű muskéta', NULL, NULL, 1, NULL, 2, NULL),
+	(7, 'Kalibrált muskéta', NULL, NULL, 2, NULL, 2, NULL),
+	(8, 'Precíz muskéta', NULL, NULL, 3, NULL, 2, NULL),
+	(9, 'Karabély', NULL, NULL, 4, NULL, 2, NULL),
+	(11, 'Tőr és Pisztoly', NULL, NULL, 1, NULL, 3, NULL),
+	(12, '-conqustador rare-', NULL, NULL, 2, NULL, 3, NULL),
+	(13, 'conquistador epic-', NULL, NULL, 3, NULL, 3, NULL),
+	(14, 'conquisdator legendary', NULL, NULL, 4, NULL, 3, NULL);
 /*!40000 ALTER TABLE `weapons` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

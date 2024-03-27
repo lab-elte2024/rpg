@@ -13,11 +13,6 @@ class Player extends Model
 
     protected $table = 'players';
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'userID');
-    }
-
     protected $fillable = [
         'name',
         'classID',
@@ -37,6 +32,27 @@ class Player extends Model
         'skill2_ID',
         'skill3_ID'
     ];
+
+
+    public function armor()
+    {
+        return $this->belongsTo(Armor::class, 'armorID');
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class, ['skill1_ID', 'skill2_ID', 'skill3_ID']);
+    }
+
+    public function weapon()
+    {
+        return $this->belongsTo(Weapon::class, 'weaponID');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userID');
+    }
 
     public function getByUserID($id){
 

@@ -22,6 +22,18 @@ class Armor extends Model
         'price'
     ];
 
+    public function players()
+    {
+        return $this->hasMany(Player::class, 'armorID');
+    }
+
+    public function class()
+    {
+        return $this->belongsTo(CharacterClass::class, 'classID');
+    }
+
+
+
     public function getArmorByClass($class_id){
 
         $name = DB::table('armor')
