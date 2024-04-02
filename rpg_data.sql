@@ -29,30 +29,18 @@ CREATE TABLE IF NOT EXISTS `armor` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.armor: ~9 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.armor: ~8 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `armor` DISABLE KEYS */;
 REPLACE INTO `armor` (`ID`, `name`, `armor`, `lvl`, `pictureID`, `classID`, `price`) VALUES
 	(1, 'Egyszerű páncél', NULL, 1, NULL, 1, 0),
 	(2, 'Vértezett páncél', NULL, 2, NULL, 1, 100),
 	(3, 'Nehéz páncél', NULL, 3, NULL, 1, 200),
 	(4, 'Sétáló Erőd', NULL, 4, NULL, 1, 300),
-	(5, 'musketer lvl1', NULL, NULL, NULL, 2, NULL),
-	(6, 'musketer lvl2', NULL, NULL, NULL, 2, NULL),
-	(7, 'musketer lvl3', NULL, NULL, NULL, 2, NULL),
-	(8, 'musketer lvl4', NULL, NULL, NULL, 2, NULL);
+	(5, 'musketer lvl1', NULL, 1, NULL, 2, 0),
+	(6, 'musketer lvl2', NULL, 2, NULL, 2, 100),
+	(7, 'musketer lvl3', NULL, 3, NULL, 2, 200),
+	(8, 'musketer lvl4', NULL, 4, NULL, 2, 300);
 /*!40000 ALTER TABLE `armor` ENABLE KEYS */;
-
--- Struktúra mentése tábla rpg_database. battle_quests
-CREATE TABLE IF NOT EXISTS `battle_quests` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `enemyID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `enemyID` (`enemyID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Tábla adatainak mentése rpg_database.battle_quests: ~0 rows (hozzávetőleg)
-/*!40000 ALTER TABLE `battle_quests` DISABLE KEYS */;
-/*!40000 ALTER TABLE `battle_quests` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. classes
 CREATE TABLE IF NOT EXISTS `classes` (
@@ -91,21 +79,88 @@ CREATE TABLE IF NOT EXISTS `enemies` (
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 
+-- Struktúra mentése tábla rpg_database. failed_jobs
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tábla adatainak mentése rpg_database.failed_jobs: ~0 rows (hozzávetőleg)
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+
+-- Struktúra mentése tábla rpg_database. migrations
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tábla adatainak mentése rpg_database.migrations: ~3 rows (hozzávetőleg)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
+	(1, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+	(2, '2019_08_19_000000_create_failed_jobs_table', 1),
+	(3, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
 -- Struktúra mentése tábla rpg_database. missions
 CREATE TABLE IF NOT EXISTS `missions` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `player_id` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `type` int(11) DEFAULT NULL,
-  `Oszlop 5` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE,
-  KEY `player_id` (`player_id`),
-  CONSTRAINT `missions_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pre_id` int(11) DEFAULT NULL,
+  `name` varchar(256) DEFAULT NULL,
+  `type` varchar(256) DEFAULT NULL,
+  `enemy_id` int(11) DEFAULT NULL,
+  `problem` text DEFAULT NULL,
+  `solution` text DEFAULT NULL,
+  `reward` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.missions: ~1 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.missions: ~0 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `missions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `missions` ENABLE KEYS */;
+
+-- Struktúra mentése tábla rpg_database. password_reset_tokens
+CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tábla adatainak mentése rpg_database.password_reset_tokens: ~0 rows (hozzávetőleg)
+/*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
+
+-- Struktúra mentése tábla rpg_database. personal_access_tokens
+CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tábla adatainak mentése rpg_database.personal_access_tokens: ~0 rows (hozzávetőleg)
+/*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. players
 CREATE TABLE IF NOT EXISTS `players` (
@@ -144,24 +199,8 @@ CREATE TABLE IF NOT EXISTS `players` (
 -- Tábla adatainak mentése rpg_database.players: ~1 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
 REPLACE INTO `players` (`ID`, `name`, `classID`, `attack`, `defense`, `speed`, `hp`, `lvl`, `xp_count`, `userID`, `maxHP`, `points`, `money`, `weaponID`, `armorID`, `skill1_ID`, `skill2_ID`, `skill3_ID`) VALUES
-	(24, 'Centurion', 1, 6, 8, 4, 100, 1, 0, 25, 100, 0, 0, 1, 1, 1, 1, 1);
+	(24, 'Centurion', 1, 6, 8, 4, 100, 1, 0, 25, 100, 0, 0, 1, 1, 1, 2, 3);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
-
--- Struktúra mentése tábla rpg_database. riddles
-CREATE TABLE IF NOT EXISTS `riddles` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `mission_id` int(11) DEFAULT NULL,
-  `question` text NOT NULL,
-  `answer` text NOT NULL,
-  `xp_earned` int(11) NOT NULL,
-  PRIMARY KEY (`ID`) USING BTREE,
-  KEY `mission_id` (`mission_id`),
-  CONSTRAINT `riddles_ibfk_1` FOREIGN KEY (`mission_id`) REFERENCES `missions` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Tábla adatainak mentése rpg_database.riddles: ~0 rows (hozzávetőleg)
-/*!40000 ALTER TABLE `riddles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `riddles` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. saves
 CREATE TABLE IF NOT EXISTS `saves` (
@@ -188,15 +227,27 @@ CREATE TABLE IF NOT EXISTS `skills` (
   `pictureID` int(11) DEFAULT NULL,
   `level_req` int(11) DEFAULT NULL,
   `is_healing` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `classID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `classID` (`classID`),
+  CONSTRAINT `FK_skills_classes` FOREIGN KEY (`classID`) REFERENCES `classes` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tábla adatainak mentése rpg_database.skills: ~3 rows (hozzávetőleg)
+-- Tábla adatainak mentése rpg_database.skills: ~12 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `skills` DISABLE KEYS */;
-REPLACE INTO `skills` (`ID`, `name`, `damage`, `cooldown`, `pictureID`, `level_req`, `is_healing`) VALUES
-	(1, 'Csapás', NULL, NULL, NULL, NULL, NULL),
-	(2, 'Védekezés', NULL, NULL, NULL, NULL, NULL),
-	(3, 'Sújtás', NULL, NULL, NULL, NULL, NULL);
+REPLACE INTO `skills` (`ID`, `name`, `damage`, `cooldown`, `pictureID`, `level_req`, `is_healing`, `classID`) VALUES
+	(1, 'Csapás', NULL, NULL, NULL, NULL, NULL, 1),
+	(2, 'Védekezés', NULL, NULL, NULL, NULL, NULL, 1),
+	(3, 'Sújtás', NULL, NULL, NULL, NULL, NULL, 1),
+	(4, 'Musketer 1', NULL, NULL, NULL, NULL, NULL, 2),
+	(5, 'Mukseter 2', NULL, NULL, NULL, NULL, NULL, 2),
+	(6, 'Musketer 3', NULL, NULL, NULL, NULL, NULL, 2),
+	(7, NULL, NULL, NULL, NULL, NULL, NULL, 3),
+	(8, NULL, NULL, NULL, NULL, NULL, NULL, 3),
+	(9, NULL, NULL, NULL, NULL, NULL, NULL, 3),
+	(10, NULL, NULL, NULL, NULL, NULL, NULL, 4),
+	(11, NULL, NULL, NULL, NULL, NULL, NULL, 4),
+	(12, NULL, NULL, NULL, NULL, NULL, NULL, 4);
 /*!40000 ALTER TABLE `skills` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. users
@@ -205,13 +256,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(256) DEFAULT NULL,
   `password` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Tábla adatainak mentése rpg_database.users: ~2 rows (hozzávetőleg)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 REPLACE INTO `users` (`ID`, `username`, `password`) VALUES
 	(9, 'valaki', '$2y$12$Rl42bcCTX/P3N9mxOKpt9.I/s839pPD0.ZXLHrsJdFGtJZtVlzlXO'),
-	(25, 'asd', '$2y$12$wRBSiKg9wUaMaWSkhm8w4eq7YGvcZAjitmdKS/rm0U4eIZOK/2rkS');
+	(25, 'asd', '$2y$12$wRBSiKg9wUaMaWSkhm8w4eq7YGvcZAjitmdKS/rm0U4eIZOK/2rkS'),
+	(26, 'test', '$2y$12$wUKKSD4IcGJvb0RXuxd1WeMBUlksvOzuXvpsDMh.pYQE2gKc7jf/S');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Struktúra mentése tábla rpg_database. weapons
