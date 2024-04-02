@@ -6,19 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        //
+        Schema::create('enemies', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 255);
+            $table->integer('hp');
+            $table->integer('attack_power');
+            $table->integer('defense_power');
+            $table->integer('speed');
+            $table->integer('pictureID')->nullable();
+            $table->timestamps();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::dropIfExists('enemies');
     }
 };

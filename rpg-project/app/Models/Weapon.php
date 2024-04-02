@@ -48,13 +48,6 @@ class Weapon extends Model
     }
 
 
-
-
-
-
-
-
-
     public function setMoney($id,$money){
         return($weapon = DB::table('players')
         ->where('ID',$id)

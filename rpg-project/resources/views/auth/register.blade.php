@@ -1,22 +1,30 @@
-<!-- create.blade.php -->
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="POST" action="{{ route('register') }}">
-    @csrf
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <title>Regisztráció</title>
+</head>
 
-    <div>
-        <label for="name">Név</label>
-        <input id="name" type="text" name="username" value="{{ old('username') }}" required autofocus>
+<body>
+
+    <div class="parent">
+        <div class="div1"><h1>Regisztráció</h1> </div>
+        <div class="div2">
+        <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <input type="text" name="username">
+                <input type="text" name="password"><br>
+
+                <input type="submit" value="Regisztráció">
+            </form>
+        </div>
     </div>
 
 
+</body>
 
-    <div>
-        <label for="password">Jelszó</label>
-        <input id="password" type="password" name="password" required>
-    </div>
-
-
-    <div>
-        <button type="submit">Regisztráció</button>
-    </div>
-</form>
+</html>

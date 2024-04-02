@@ -6,19 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        //
+        Schema::create('skills', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 256)->nullable();
+            $table->integer('damage')->nullable();
+            $table->integer('cooldown')->nullable();
+            $table->integer('pictureID')->nullable();
+            $table->integer('level_req')->nullable();
+            $table->integer('is_healing')->nullable();
+            $table->timestamps();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::dropIfExists('skills');
     }
 };
