@@ -6,30 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('armor', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 256)->nullable();
+            $table->string('name')->nullable();
             $table->integer('armor')->nullable();
             $table->integer('lvl')->nullable();
             $table->integer('pictureID')->nullable();
-            $table->integer('classID')->nullable();
+            $table->unsignedBigInteger('classID');
+            $table->foreign('classID')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('price')->nullable();
-        });
 
-        $table->foreign('classID')->references('id')->on('classes')
-        ->onDelete('NO ACTION')
-        ->onUpdate('NO ACTION');
+
+
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('armor');
     }

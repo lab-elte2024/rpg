@@ -22,7 +22,7 @@ class Classes extends Model
 
     public function Weapon()
     {
-        return $this->hasOne(Weapon::class, 'classID');
+        return $this->hasMany(Weapon::class);
     }
 
     public function getClassByID($id){

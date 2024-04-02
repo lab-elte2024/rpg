@@ -13,12 +13,13 @@ class Weapon extends Model
 
     protected $table = 'weapons';
 
+    protected $fillable = ['name', 'min_attack', 'max_attack', 'lvl', 'pictureID', 'classID', 'price'];
+
     public function Classes()
     {
-        return $this->belongsTo(Classes::class, 'classID');
+        return $this->belongsTo(Classes::class);
     }
 
-    protected $fillable = ['classID', 'name', 'min_damage', 'max_damage', 'rarity', 'price', 'is_purchasable', 'pictureID','price'];
 
     public function getWeaponByClass($class_id){
 

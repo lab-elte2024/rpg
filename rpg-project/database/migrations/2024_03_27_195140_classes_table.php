@@ -15,7 +15,9 @@ return new class extends Migration
             $table->integer('defense')->nullable();
             $table->integer('speed')->nullable();
             $table->integer('pictureID')->nullable();
-            $table->timestamps();
+
+
+
         });
     }
 

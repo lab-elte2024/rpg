@@ -11,30 +11,29 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->integer('classID')->default(0);
+            $table->unsignedBigInteger('classID');
+            $table->foreign('classID')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('attack');
             $table->integer('defense');
             $table->integer('speed');
             $table->integer('hp')->default(100);
             $table->integer('lvl')->default(1);
             $table->integer('xp_count')->default(0);
-            $table->integer('userID')->nullable();
+            $table->unsignedBigInteger('userID');
+            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('maxHP')->default(100);
             $table->integer('points')->default(0);
             $table->integer('money')->default(0);
-            $table->integer('weaponID');
-            $table->integer('armorID');
+            $table->unsignedBigInteger('weaponID');
+            $table->foreign('weaponID')->references('id')->on('weapons')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('armorID');
+            $table->foreign('armorID')->references('id')->on('armor')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('skill1_ID');
             $table->integer('skill2_ID');
             $table->integer('skill3_ID');
-            $table->timestamps();
 
-            $table->foreign('armorID')->references('ID')->on('armor')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('skill1_ID')->references('ID')->on('skills')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('skill2_ID')->references('ID')->on('skills')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('skill3_ID')->references('ID')->on('skills')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('weaponID')->references('ID')->on('weapons')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('userID')->references('ID')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+
+
         });
     }
 

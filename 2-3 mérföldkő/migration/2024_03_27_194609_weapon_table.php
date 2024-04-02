@@ -18,15 +18,12 @@ return new class extends Migration
             $table->integer('max_attack')->nullable();
             $table->integer('lvl')->nullable();
             $table->integer('pictureID')->nullable();
-            $table->integer('classID')->nullable();
+            $table->unsignedBigInteger('classID');
+            $table->foreign('classID')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('price')->nullable();
-
-            $table->foreign('classID')->references('id')->on('classes')
-            ->onDelete('NO ACTION')
-            ->onUpdate('NO ACTION');
-
-
+            $table->timestamps();
         });
+
     }
 
     /**

@@ -11,14 +11,13 @@ return new class extends Migration
     {
         Schema::create('missions', function (Blueprint $table) {
             $table->id();
-            $table->int('pre_id')->nullable();
+            $table->integer('preID')->nullable();
             $table->string('name', 256);
             $table->string('type', 256);
-            $table->int('enemy_id')->nullable();
+            $table->integer('enemyID')->nullable();
             $table->text('problem')->nullable();
             $table->text('solution')->nullable();
             $table->text('reward')->nullable();
-            $table->timestamps();
         });
     }
 
