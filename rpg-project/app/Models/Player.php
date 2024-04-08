@@ -30,7 +30,8 @@ class Player extends Model
         'armorID',
         'skill1_ID',
         'skill2_ID',
-        'skill3_ID'
+        'skill3_ID',
+        'current_mission'
     ];
 
 
@@ -61,11 +62,16 @@ class Player extends Model
 
     }
 
-    public function attack($attack,$weapon_damage,$speed){
+    public function useSkill($skill_ID){
 
-        $dmg = $attack + $weapon_damage + ($speed/2);
+        $skill = DB::table('skills')->where('id',$skill_ID)->get();
 
-        return $dmg;
+
+
+
+        //$dmg = $attack + $weapon_damage + ($speed/2);
+
+        //return $dmg;
 
     }
 

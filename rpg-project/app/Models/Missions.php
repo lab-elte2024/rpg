@@ -13,9 +13,6 @@ class Missions extends Model
         'name',
     ];
 
-
-
-
     public function player()
     {
         return $this->belongsTo(Player::class, 'player_id');
@@ -41,5 +38,9 @@ class Missions extends Model
             'reward',
         ];
     }
+
+
+
+
 
 ?>

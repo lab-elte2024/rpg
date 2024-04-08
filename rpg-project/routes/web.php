@@ -15,7 +15,15 @@ Route::get('/stat', function () {
 
 
 Route::get('/', function () {
-    return view('village.village');
+    return view('battlev2');
+});
+
+Route::get('/mission', function () {
+    return view('missions');
+});
+
+Route::get('/battle', function () {
+    return view('battle');
 });
 
 Route::get('/village', function () {
