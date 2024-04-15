@@ -62,6 +62,11 @@ class Player extends Model
 
     }
 
+
+    public function updateStat(){
+
+    }
+
     public function useSkill($skill_ID){
 
         $skill = DB::table('skills')->where('id',$skill_ID)->get();

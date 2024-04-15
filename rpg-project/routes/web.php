@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('battlev2');
 });
 
+
+
 Route::get('/mission', function () {
     return view('missions');
 });

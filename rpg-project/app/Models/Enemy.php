@@ -22,7 +22,7 @@ class Enemy extends Model
 
 
     public function getById($id){
-        $enemy = DB::table('enemies')->where('id',$id)->get();
+        $enemy = DB::table('enemies')->where('ID',$id)->get();
         return $enemy;
     }
 
