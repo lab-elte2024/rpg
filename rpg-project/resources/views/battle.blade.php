@@ -18,6 +18,9 @@
     $weapons = new App\Models\Weapon();
     $armors = new App\Models\Armor();
 
+
+
+
     $player = $players->getByUserID(session('ID'))->first();
 
     $enemy = $enemies->getById(1)->first();

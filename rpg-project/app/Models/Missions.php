@@ -19,16 +19,19 @@ class Missions extends Model
     }
 }
 
-    class CombatMission extends Mission
+    class CombatMission extends Missions
     {
         protected $fillable = [
             'pre_id',
             'name',
             'enemy_id',
         ];
+
+
+
     }
 
-    class ProblemSolutionMission extends Mission
+    class ProblemSolutionMission extends Missions
     {
         protected $fillable = [
             'pre_id',

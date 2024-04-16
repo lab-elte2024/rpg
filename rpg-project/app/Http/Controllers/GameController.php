@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Weapon;
 use App\Models\Classes;
+use App\Models\Missions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -20,6 +21,11 @@ class GameController extends Controller
 
     public function createPlayer(){
         return view('mkplayer');
+    }
+
+    public function shwMissions(){
+        $missions = Missions::all();
+        return view('missions',compact('missions'));
     }
 
 }

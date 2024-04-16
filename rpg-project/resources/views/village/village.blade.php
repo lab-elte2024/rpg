@@ -13,7 +13,7 @@
     <div class="parent">
         <div class="div1"><a href="blacksmith">blacksmith</a></div>
         <div class="div2"> tavern</div>
-        <div class="div3"><a href="missions">quests</a></div>
+        <div class="div3"><a href="mission">quests</a></div>
         <div class="div4"><a href="battle">test</a></div>
         <div class="div5"> player menu?</div>
         </div>

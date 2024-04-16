@@ -20,9 +20,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/mission', function () {
-    return view('missions');
-});
+Route::get('/mission', [GameController::class, 'shwMissions']);
 
 Route::get('/battle', function () {
     return view('battle');

@@ -9,10 +9,29 @@
 </head>
 <body>
     <div class="parent">
-        <div class="div1">jelenlegi mission</div>
-        <div class="div2">eddigi missionok</div>
-        <div class="div3">mission</div>
+        <div class="div1">jelenlegi küldetésed</div>
+        <div class="div2">teljesített küldetéseid</div>
         <div class="div4"><a href="/village">exit</a></div>
         </div>
+
+        <ul>
+            @foreach ($missions as $mission)
+            <li onclick="sortLink({{$mission->type}})">{{ $mission->name }}</li>
+        @endforeach
+        </ul>
+
+        <script>
+            function sortLink(type){
+                if(type == 0){
+                    window.location.href = "/battle";
+                }
+                else{
+                    window.location.href = "/menu";
+                }
+            }
+        </script>
+
+
+
 </body>
 </html>
