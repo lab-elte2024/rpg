@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/mission', [GameController::class, 'shwMissions']);
+
 
 Route::get('/battle', function () {
     return view('battle');
@@ -77,3 +77,11 @@ Route::post('/upgrade_weapon', [Weapon::class, 'upgrade']);
 Route::post('/upgrade_armor', [Armor::class, 'upgrade']);
 
 //////////////////////////
+
+
+//////////////--- Mission ---////////////////
+Route::get('/mission', [GameController::class, 'shwMissions']);
+
+Route::post('/load_mission', [GameController::class, 'LoadMission']);
+
+///////////////////////////////

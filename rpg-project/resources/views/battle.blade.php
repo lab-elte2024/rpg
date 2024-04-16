@@ -155,6 +155,14 @@
         alert('Az ellenfél már halott!');
 
     }
+
+    public function GameOver(eredmeny){
+        //kiiertekeles eredmeny alapjan
+        //kell egy graveyard ahova aplayer kerul ha meghal
+        //az xp keplete: ????
+        //penz random (?)
+    }
+
 }
 
 

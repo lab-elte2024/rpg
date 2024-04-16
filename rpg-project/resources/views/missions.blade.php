@@ -29,6 +29,32 @@
                     window.location.href = "/menu";
                 }
             }
+
+            /*
+                function sortLink(type) {
+                    // Létrehozunk egy űrlapot
+                    var form = document.createElement('form');
+                    form.method = 'POST'; // Állítsuk be a POST módot
+
+                    // A cselekvés URL-je a /battle vagy /menu lesz, attól függően, hogy a type értéke 0 vagy sem
+                    var action = (type == 0) ? '/battle' : '/menu';
+                    form.action = action;
+
+                    // Adjunk hozzá egy rejtett inputot a type változó értékével
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'type';
+                    input.value = type;
+                    form.appendChild(input);
+
+                    // Adjuk hozzá az űrlapot a dokumentumhoz és küldjük el
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+
+
+
+            */
         </script>
 
 

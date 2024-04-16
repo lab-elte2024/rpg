@@ -28,4 +28,17 @@ class GameController extends Controller
         return view('missions',compact('missions'));
     }
 
+    public function LoadMission(Request $request){
+
+        $data = $request->all();
+        //a datában lesz az enemy/fejtoro id es a type
+        // itt meg majd a type alapjan jon a lekerdezes es kiiertekeles vagy mi fene
+
+
+
+
+    }
+
+
+
 }
