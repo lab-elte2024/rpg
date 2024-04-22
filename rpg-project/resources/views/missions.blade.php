@@ -15,6 +15,7 @@
         </div>
 
         <ul>
+
             @foreach ($missions as $mission)
             <li onclick="sortLink({{$mission->type}})">{{ $mission->name }}</li>
         @endforeach
@@ -23,7 +24,7 @@
         <script>
             function sortLink(type){
                 if(type == 0){
-                    window.location.href = "/battle";
+                    window.location.href = "/load_mission";
                 }
                 else{
                     window.location.href = "/menu";

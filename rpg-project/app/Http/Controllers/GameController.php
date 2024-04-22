@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Weapon;
 use App\Models\Classes;
 use App\Models\Missions;
+use App\Models\enemy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -28,9 +29,12 @@ class GameController extends Controller
         return view('missions',compact('missions'));
     }
 
-    public function LoadMission(Request $request){
+    public function LoadMission(){
 
-        $data = $request->all();
+        $enemy = Enemy::where('ID',1)->get(); // Fegyverek lekérése az adatbázisból
+
+        return view('battle', compact('enemy')); // Nézet átadása a fegyverek listájával
+
         //a datában lesz az enemy/fejtoro id es a type
         // itt meg majd a type alapjan jon a lekerdezes es kiiertekeles vagy mi fene
 

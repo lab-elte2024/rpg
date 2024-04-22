@@ -39,5 +39,17 @@ class Classes extends Model
 
     }
 
+    /*
+
+    int is_counterAttack
+
+    0 no
+    1 yes
+
+
+
+
+    */
+
 
 }

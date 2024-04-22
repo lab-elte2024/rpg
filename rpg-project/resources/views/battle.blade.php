@@ -23,11 +23,13 @@
 
     $player = $players->getByUserID(session('ID'))->first();
 
-    $enemy = $enemies->getById(1)->first();
+    foreach ($enemy as $e) {
+        $enemyMaxHp = $e->hp;
+        $enemyHp =  $e->hp;
+        $enemyName = $e->name;
+    }
 
-    $enemyMaxHp = $enemy->hp;
 
-    $enemyHp =  $enemy->hp;
 
     $weapon = $weapons->getWeaponByID($player->weaponID)->first();
 
@@ -52,10 +54,6 @@
 
     $t = 10;
 
-    function asd(){
-        $message = "wrong answer";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-    }
 
 @endphp
 
@@ -68,7 +66,7 @@
         <div class="div5" onclick="useSkill({{$skill3->damage}},{{$skill3->is_healing}})">{{$skill3->name}} </div>
         <div class="div6" onclick="endTurn()">end turn </div>
         <div class="div7" onclick="tryToflee()" id="flee">try to flee</div>
-        <div class="div8">{{$enemy->name}}</div>
+        <div class="div8">{{$enemyName}}</div>
         <div class="div9"><progress id="ehp_bar" value={{$enemyHp}} max={{$enemyMaxHp}}></progress></div>
     </div>
 
@@ -156,11 +154,12 @@
 
     }
 
-    public function GameOver(eredmeny){
+    function GameOver(eredmeny){
         //kiiertekeles eredmeny alapjan
         //kell egy graveyard ahova aplayer kerul ha meghal
         //az xp keplete: ????
         //penz random (?)
+        return true;
     }
 
 }

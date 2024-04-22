@@ -7,8 +7,17 @@
     <h1>Fegyverek listája</h1>
 
     <ul>
-        @foreach ($weapons as $weapon)
-            <li>{{ $weapon->name }}</li>
+        @php
+           foreach ($enemy as $e) {
+            $name = $e->name;
+           }
+
+        @endphp
+
+        {{$name}}
+
+        @foreach ($enemy as $e)
+            <li>{{ $e->name }}</li>
         @endforeach
     </ul>
 </body>
