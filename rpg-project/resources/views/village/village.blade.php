@@ -15,7 +15,7 @@
         <div class="div2"> tavern</div>
         <div class="div3"><a href="mission">quests</a></div>
         <div class="div4"><a href="battle">test</a></div>
-        <div class="div5"> player menu?</div>
+        <div class="div5"><a href="stat">player stats</a></div>
         </div>
 </body>
 </html>

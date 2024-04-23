@@ -7,7 +7,7 @@ use App\Models\Missions;
 use App\Models\enemy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -25,24 +25,35 @@ class GameController extends Controller
     }
 
     public function shwMissions(){
-        $missions = Missions::all();
+        $missions = Missions::where("status",1)->get();
         return view('missions',compact('missions'));
     }
 
-    public function LoadMission(){
 
-        $enemy = Enemy::where('ID',1)->get(); // Fegyverek lekérése az adatbázisból
+    public function sortMission(Request $request){
+        $data = $request->all();
 
-        return view('battle', compact('enemy')); // Nézet átadása a fegyverek listájával
+        $mission = Missions::where("id",$data['missionID'])->first();
 
-        //a datában lesz az enemy/fejtoro id es a type
-        // itt meg majd a type alapjan jon a lekerdezes es kiiertekeles vagy mi fene
+        if($mission->type == 0){
+            $enemy = Enemy::where('ID',$mission->enemy_id)->get();
+            return view('battle', compact('enemy'));
+        }
+        else{
+            return view('menu');
+        }
+    }
+
+    public function loadNextMission(){
+        //miután kész a küldi a statust át kell állítani a réginél és betölteni az újat.
+        //0 nincs elkezdve
+        //1 elkezdve
+        //2 befejezve
+
 
 
 
 
     }
-
-
 
 }

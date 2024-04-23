@@ -14,7 +14,11 @@
         $classes = new App\Models\Classes();
         $weapons = new App\Models\Weapon();
         $armors = new App\Models\Armor();
+
         $playerCtrl =  new  App\Http\Controllers\PlayerController();
+
+
+
         $data = $classes::paginate(1);
         $user_id = session('ID');
     @endphp
@@ -78,6 +82,9 @@
                         <input type="hidden" value={{$aid}} name="armorID">
                         Páncélod:{{ $a->name }}<br>
                     @endforeach
+
+
+
 
                     <label for="name">Neved:</label>
                 <input type="text" name="name"><br>

@@ -71,9 +71,6 @@ class Player extends Model
 
         $skill = DB::table('skills')->where('id',$skill_ID)->get();
 
-
-
-
         //$dmg = $attack + $weapon_damage + ($speed/2);
 
         //return $dmg;

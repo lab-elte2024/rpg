@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
-
+use App\Models\Skills;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RedirectResponse;
 
@@ -16,6 +16,17 @@ class PlayerController extends Controller
 
         $classData = DB::table('classes')->where('ID', $data['classID'])->first();
 
+        $cID = $data['classID'];
+
+        $skills = new Skills();
+        $sk = $skills->getById($cID*1);
+        $skillsT = [];
+
+        foreach ($sk as $s) {
+            $skillsT[] = $s->ID;
+        }
+
+
 
         return Player::create([
             'name' => $data['name'],
@@ -26,9 +37,9 @@ class PlayerController extends Controller
             'weaponID' => $data['weaponID'],
             'armorID' => $data['armorID'],
             'userID' => $data['userID'],
-            'skill1_ID' => 1,
-            'skill2_ID' => 1,
-            'skill3_ID' => 1,
+            'skill1_ID' => $skillsT[0],
+            'skill2_ID' => $skillsT[1],
+            'skill3_ID' => $skillsT[2],
           ]);
     }
 
@@ -40,7 +51,7 @@ class PlayerController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("village");
+        return redirect("login");
     }
 
 

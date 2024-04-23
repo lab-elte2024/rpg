@@ -20,7 +20,7 @@ class Skills extends Model
 
     public function getById($id){
 
-        $skill = DB::table('skills')->where('id',$id)->get();
+        $skill = DB::table('skills')->where('classID',$id)->get();
         return $skill;
 
     }

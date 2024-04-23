@@ -19,13 +19,6 @@ Route::get('/', function () {
 });
 
 
-
-
-
-Route::get('/battle', function () {
-    return view('battle');
-});
-
 Route::get('/village', function () {
     return view('village.village');
 });
@@ -82,6 +75,8 @@ Route::post('/upgrade_armor', [Armor::class, 'upgrade']);
 //////////////--- Mission ---////////////////
 Route::get('/mission', [GameController::class, 'shwMissions']);
 
-Route::get('/load_mission', [GameController::class, 'LoadMission']);
+Route::post('/sorting',[GameController::class,'sortMission']);
+
+
 
 ///////////////////////////////

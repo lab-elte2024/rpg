@@ -10,3 +10,32 @@
     .div2 { grid-area: 3 / 2 / 4 / 3; }
     .div3 { grid-area: 2 / 4 / 3 / 5; }
     .div4 { grid-area: 5 / 5 / 6 / 6; }
+
+
+    /* CSS for mission list */
+ul.mission-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.mission-list li {
+    margin-bottom: 10px;
+}
+
+ul.mission-list li input[type="submit"] {
+    background-color: #4CAF50; /* Zöld szín a gombnak */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+ul.mission-list li input[type="submit"]:hover {
+    background-color: #45a049; /* Sötétebb zöld szín hover esetén */
+}
