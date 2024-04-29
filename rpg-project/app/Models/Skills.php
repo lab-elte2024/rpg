@@ -18,9 +18,16 @@ class Skills extends Model
         'is_healing',
     ];
 
-    public function getById($id){
+    public function getByClassID($id){
 
         $skill = DB::table('skills')->where('classID',$id)->get();
+        return $skill;
+
+    }
+
+    public function getById($id){
+
+        $skill = DB::table('skills')->where('ID',$id)->get();
         return $skill;
 
     }

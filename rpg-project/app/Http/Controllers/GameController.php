@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Weapon;
 use App\Models\Classes;
 use App\Models\Missions;
+use App\Models\Player;
+use App\Models\Armor;
 use App\Models\enemy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -50,9 +52,30 @@ class GameController extends Controller
         //1 elkezdve
         //2 befejezve
 
+    }
 
+    public function loadPlayerStat(){
+        //miután kész a küldi a statust át kell állítani a réginél és betölteni az újat.
+        //0 nincs elkezdve
+        //1 elkezdve
+        //2 befejezve
+        $player = Player::where('userID',session('ID'))->get();
 
+        foreach($player as $p){
+            $weaponID = $p->weaponID;
+            $armorID = $p->armorID;
+        }
+        $weapon = Weapon::where('ID',$weaponID)->first();
+        $armor = Armor::where('ID',$armorID)->first();
 
+        /*
+        return view('stat')
+        ->with('player',$player)
+        ->with('weapon',$weapon)
+        ->with('armor',$armor);
+        */
+
+        return view('stat',compact('player','weapon','armor'));
 
     }
 

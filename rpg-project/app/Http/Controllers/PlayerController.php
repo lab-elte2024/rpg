@@ -19,7 +19,7 @@ class PlayerController extends Controller
         $cID = $data['classID'];
 
         $skills = new Skills();
-        $sk = $skills->getById($cID*1);
+        $sk = $skills->getByClassID($cID*1);
         $skillsT = [];
 
         foreach ($sk as $s) {

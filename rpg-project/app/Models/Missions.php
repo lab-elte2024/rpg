@@ -10,6 +10,7 @@ class Missions extends Model
 
     protected $fillable = [
         'pre_id',
+        'description',
         'name',
     ];
 
@@ -24,6 +25,7 @@ class CombatMission extends Missions
     protected $fillable = [
         'pre_id',
         'name',
+        'description',
         'enemy_id',
     ];
 
@@ -38,7 +40,7 @@ class ProblemSolutionMission extends Missions
         protected $fillable = [
             'pre_id',
             'name',
-            'problem',
+            'description',
             'solution',
             'reward',
         ];

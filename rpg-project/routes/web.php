@@ -9,9 +9,7 @@ use App\Models\Armor;
 
 
 
-Route::get('/stat', function () {
-    return view('stat');
-});
+Route::get('/stat', [GameController::class, 'loadPlayerStat']);
 
 
 Route::get('/', function () {
