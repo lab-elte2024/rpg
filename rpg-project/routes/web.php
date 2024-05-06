@@ -77,4 +77,10 @@ Route::post('/sorting',[GameController::class,'sortMission']);
 
 
 
+// routes/web.php
+
+Route::post('/update', [PlayerController::class, 'update']);
+
+
+
 ///////////////////////////////

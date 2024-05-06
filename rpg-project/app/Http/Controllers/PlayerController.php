@@ -62,5 +62,32 @@ class PlayerController extends Controller
         return redirect("stat");
     }
 
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        $at = $data['attack'];
+        $def = $data['def'];
+        $spd = $data['spd'];
+        $tp = $data['tp'];
+        $maxHP = $data['maxHP'];
+        $playerId = $data['playerID'];
+
+        DB::table('players')
+        ->where('id', $playerId)
+        ->update([
+            'attack' => $at,
+            'defense' => $def,
+            'speed' => $spd,
+            'maxHP' => $maxHP,
+            'points' => $tp
+        ]);
+
+
+    }
+
+
+
+
+
 
 }
