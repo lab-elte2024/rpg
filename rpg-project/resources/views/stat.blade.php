@@ -11,12 +11,29 @@
 </head>
 
 <body>
+
+
+
     @foreach ($player as $p)
+        @php
+            $lvlCap = $p->lvl * 100;
+
+            //itt le kérne kérni a jelenlegi értékeket és ha nem egyezik akkor update
+            $speed = $p->speed;
+            $maxHP = $p->maxHP;
+            $at = $p->attack;
+            $def = $p->defense;
+
+
+        @endphp
         <div class="parent">
             <div class="karakter">Karakter </div>
             <div class="fegyver">{{ $weapon->name }} </div>
             <div class="pancel">{{ $armor->name }} </div>
-            <div class="tp">Tapasztalat pontjaid: {{ $p->points }}</div>
+            <div class="tp">
+                Tapasztalat pontjaid: {{ $p->points }}<br>
+                Xp: {{ $p->xp_count }}/{{ $lvlCap }}
+            </div>
             <div class="stat">
 
                 <div class="stats">
@@ -25,15 +42,18 @@
                     <div class="hp_btn">
                         @if ($p->points > 0)
                             <button>+</button>
+                            <button>-</button>
                         @endif
 
 
                     </div>
+
                     <div class="attack_lbl">Támadás</div>
                     <div class="attack_stat">{{ $p->attack }} </div>
                     <div class="attack_btn">
                         @if ($p->points > 0)
                             <button>+</button>
+                            <button>-</button>
                         @endif
                     </div>
                     <div class="defense_lbl">Védelem:</div>
@@ -41,6 +61,7 @@
                     <div class="defense_btn">
                         @if ($p->points > 0)
                             <button>+</button>
+                            <button>-</button>
                         @endif
                     </div>
                     <div class="speed_lbl">Gyorsaság</div>
@@ -48,12 +69,39 @@
                     <div class="speed_btn">
                         @if ($p->points > 0)
                             <button>+</button>
+                            <button>-</button>
                         @endif
                     </div>
+                    <button onclick="update()">
+                        Mentés
+                    </button>
                 </div>
             </div>
+
         </div>
     @endforeach
+
+
+
+    <script>
+        /*
+
+        add: itt kezeli a hozzáadott extra pontot
+        update: végrehalytja az updatet
+
+
+        */
+
+
+        function add(){
+
+        }
+
+        function update(){
+
+        }
+    </script>
+
 </body>
 
 </html>

@@ -26,6 +26,12 @@
             $enemyMaxHp = $e->hp;
             $enemyHp = $e->hp;
             $enemyName = $e->name;
+            $eCounter = $e->isCounter;
+            $eSpd = $e->speed;
+            $eAt = $e->attack;
+            $eDef = $e->defense;
+            $eDmg = ($eSpd/2) + $eAt; // attack dmg
+            $eCdmg = ($eSpd/2) + $eDef; //counter attack dmg
         }
 
         $weapon = $weapons->getWeaponByID($player->weaponID)->first();
@@ -47,7 +53,9 @@
         $skill2 = $skills->getById($player->skill2_ID)->first();
         $skill3 = $skills->getById($player->skill3_ID)->first();
 
-        $t = 10;
+        $pCounter = $player->isCounter;
+        $pCdmg = ($speed/2) + $defense; //counter attack dmg player
+
 
     @endphp
 
@@ -78,7 +86,6 @@
     function tryToflee() {
         $speed = {{ $player->speed }};
 
-
         if ($speed >= 7) {
             alert('sikeresen elmenekültél!');
             window.location.href = '/menu ';
@@ -92,7 +99,7 @@
 
 
     function useSkill($sdmg, $is_healing, $cooldown) {
-
+        //player attack
 
         if ($is_healing == 1) {
             var playerHP = document.getElementById('hp_bar').value * 1;
@@ -100,18 +107,19 @@
             document.getElementById('hp_bar').value = playerHP;
         } else {
 
-            var weapon_dmg = Math.floor(Math.random() * ({{ $max_dmg }} - {{ $min_dmg }} + 1)) +
-                {{ $min_dmg }};
+            var eC = {{ $eCounter }};
+            var weapon_dmg = Math.floor(Math.random() * ({{ $max_dmg }} - {{ $min_dmg }} + 1)) + {{ $min_dmg }};
             var dmg = $sdmg + weapon_dmg + ({{ $attack }} / 2);
 
 
             var enemyHP = document.getElementById('ehp_bar').value * 1;
             enemyHP -= dmg;
 
-            //counter attack
-            //if is_counter == 1
-            //else
-
+            if (eC == 1) {
+                playerHP = document.getElementById('hp_bar').value * 1;
+                playerHP -= {{$eCdmg}};
+                document.getElementById('hp_bar').value = playerHP;
+            }
 
             document.getElementById('ehp_bar').value = enemyHP;
             console.log(dmg);
@@ -121,7 +129,10 @@
         if (enemyHP <= 0) {
             alert("Győzelem")
         } else {
-            alert("Az ellenség következik");
+            setTimeout(() => {
+                alert("Az ellenség következik");
+            }, 1000);
+
             setTimeout(() => {
                 endTurn()
             }, 3000);
@@ -130,36 +141,35 @@
     }
 
 
+
     function endTurn() {
+        //enemy attack
         var enemyHP = document.getElementById('ehp_bar').value * 1;
         var playerHP = document.getElementById('hp_bar').value * 1;
 
         if (enemyHP > 0) {
-            var enemyAttack = 1;
+            var enemyAttack = {{$eDmg}}};
 
-            //counter attack
-            //if is_counter == 1
-            //else
-
-            var playerDamage = {{ $attack }} + ({{ $speed }} / 2);
+            var pC = {{ $pCounter }};
+            //var playerDamage = {{ $attack }} + ({{ $speed }} / 2);
             playerHP -= enemyAttack;
-            playerHP -= playerDamage;
+
+
+            if (pC == 1) {
+                enemyHP -= {{$pCdmg}};
+            }
 
 
             document.getElementById('ehp_bar').value = enemyHP;
             document.getElementById('hp_bar').value = playerHP;
 
 
-
-
-
             if (playerHP <= 0) {
                 alert('Vesztettél!');
             }
-        } else {
-            alert('Az ellenfél már halott!');
 
-        }
+
+    }
 
         function GameOver(eredmeny) {
             //kiiertekeles eredmeny alapjan
@@ -176,7 +186,8 @@
             return true;
         }
 
-    }
+
+
 </script>
 
 </html>

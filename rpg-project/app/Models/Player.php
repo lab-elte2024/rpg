@@ -31,7 +31,8 @@ class Player extends Model
         'skill1_ID',
         'skill2_ID',
         'skill3_ID',
-        'current_mission'
+        'current_mission',
+        'isCounter',
     ];
 
 

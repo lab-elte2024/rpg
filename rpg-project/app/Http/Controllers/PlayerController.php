@@ -55,4 +55,12 @@ class PlayerController extends Controller
     }
 
 
+    public function update_stat(){
+
+
+
+        return redirect("stat");
+    }
+
+
 }

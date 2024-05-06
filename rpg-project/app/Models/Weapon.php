@@ -73,8 +73,6 @@ class Weapon extends Model
         }else{
 
         }
-
-
         return redirect('blacksmith');
     }
 

@@ -14,10 +14,11 @@ class Enemy extends Model
 
     protected $fillable = [
         'name',
-        'attack_power',
-        'defense_power',
+        'attack',
+        'defense',
         'speed',
-        'pictureID'
+        'pictureID',
+        'isCounter',
     ];
 
 
