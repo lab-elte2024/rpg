@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jaro:opsz@6..72&display=swap');
+
 .parent {
     text-align: center;
     display: grid;
@@ -9,3 +11,4 @@
 
     .div1 { grid-area: 2 / 3 / 3 / 4; }
     .div2 { grid-area: 4 / 3 / 5 / 4; }
+

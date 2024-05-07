@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+
     <title>Regisztráció</title>
 </head>
 
@@ -19,7 +21,7 @@
                 <input type="text" name="username">
                 <input type="text" name="password"><br>
 
-                <input type="submit" value="Regisztráció">
+                <input type="submit" id="btn" value="Regisztráció">
             </form>
         </div>
     </div>

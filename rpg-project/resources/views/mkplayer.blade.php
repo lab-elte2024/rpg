@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/mk_player.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+
     <title>Új karakter</title>
 </head>
 <body>
@@ -88,7 +90,7 @@
 
                     <label for="name">Neved:</label>
                 <input type="text" name="name"><br>
-                <input type="submit" value="Létrehoz">
+                <input type="submit" value="Létrehoz" id="btn">
 
             </form>
         </div>
