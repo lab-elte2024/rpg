@@ -75,11 +75,11 @@
                     <form action="/update" method="POST">
                         @csrf
                         <input type="hidden" name="playerID" value="{{ $p->ID }}">
-                        <input type="hidden" name="attack" id="attack">
-                        <input type="hidden" name="def" id="def">
-                        <input type="hidden" name="spd" id="spd">
-                        <input type="hidden" name="tp" id="tp">
-                        <input type="hidden" name="maxHP" id="maxHP">
+                        <input type="hidden" name="attack" id="attack" value="{{$at}}">
+                        <input type="hidden" name="defense" id="defense" value="{{$def}}">
+                        <input type="hidden" name="speed" id="speed" value="{{$speed}}">
+                        <input type="hidden" name="tpoint" id="tpoint" value="{{$tp}}">
+                        <input type="hidden" name="maxHP" id="maxHP" value="{{$maxHP}}">
 
                         <input type="submit" value="Mentés">
                     </form>
@@ -153,10 +153,11 @@
                 }
             }
             document.getElementById('maxHP').value = maxHP;
-            document.getElementById('at').value = at;
-            document.getElementById('def').value = def;
-            document.getElementById('spd').value = spd;
-            document.getElementById('tp').value = tp;
+            document.getElementById('attack').value = at;
+            document.getElementById('defense').value = def;
+            document.getElementById('speed').value = spd;
+            document.getElementById('tpoint').value = tp;
+
 
         }
     </script>
