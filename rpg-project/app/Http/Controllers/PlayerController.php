@@ -62,26 +62,59 @@ class PlayerController extends Controller
         return redirect("stat");
     }
 
+        public function loadPlayerStat(){
+        //miután kész a küldi a statust át kell állítani a réginél és betölteni az újat.
+        //0 nincs elkezdve
+        //1 elkezdve
+        //2 befejezve
+        $player = Player::where('userID',session('ID'))->get();
+
+        foreach($player as $p){
+            $weaponID = $p->weaponID;
+            $armorID = $p->armorID;
+        }
+        $weapon = Weapon::where('ID',$weaponID)->first();
+        $armor = Armor::where('ID',$armorID)->first();
+
+        /*
+        return view('stat')
+        ->with('player',$player)
+        ->with('weapon',$weapon)
+        ->with('armor',$armor);
+        */
+
+        return view('stat',compact('player','weapon','armor'));
+
+    }
+
     public function update(Request $request)
     {
         $data = $request->all();
-        $at = $data['attack'];
-        $def = $data['def'];
-        $spd = $data['spd'];
-        $tp = $data['tp'];
-        $maxHP = $data['maxHP'];
-        $playerId = $data['playerID'];
 
-        DB::table('players')
-        ->where('id', $playerId)
-        ->update([
-            'attack' => $at,
-            'defense' => $def,
-            'speed' => $spd,
-            'maxHP' => $maxHP,
-            'points' => $tp
-        ]);
 
+            $at = $data['attack'];
+            $def = $data['defense'];
+            $spd = $data['speed'];
+            $tp = $data['tpoint'];
+            $maxHP = $data['maxHP'];
+            $playerId = $data['playerID'];
+
+
+
+            DB::table('players')
+            ->where('id', $playerId)
+            ->update([
+                'attack' => $at,
+                'defense' => $def,
+                'speed' => $spd,
+                'maxHP' => $maxHP,
+                'points' => $tp
+            ]);
+
+
+
+
+        return redirect('stat');
 
     }
 
