@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/missions.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+
     <title>Küldetések</title>
 </head>
 
@@ -22,7 +24,7 @@
                 <form method="POST" action="sorting">
                     @csrf
                     <input type="hidden" name="missionID" value="{{ $mission->id }}">
-                    <input type="submit" value="{{ $mission->name }}">
+                    <input type="submit"value="{{ $mission->name }}">
                 </form>
             </li>
         @endforeach

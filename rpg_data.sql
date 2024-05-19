@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `enemies` (
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 
--- Struktúra mentése tábla rpg_database. failed_jobs
+-- Struktúra mentése tábla rpg_databaćse. failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) NOT NULL,

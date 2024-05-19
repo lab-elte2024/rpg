@@ -4,6 +4,7 @@ body {
     background-color: #A0522D;
     font-family: "Jaini";
     font-size: 30pt;
+    margin:auto;
  }
 
 h1{
@@ -14,7 +15,6 @@ h1{
 
 button {
     font-family: "Jacquard 24";
-
 }
 
 input{
@@ -25,7 +25,7 @@ input{
 }
 /* Alap stílus a gombhoz */
 #btn {
-    border: none;
+    border: 1px solid black;
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
@@ -35,6 +35,7 @@ input{
 #btn:hover {
     background-color: #5C4033; /* Sötétebb zöld */
     color: white;
+    cursor: pointer;
 
 }
 

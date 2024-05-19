@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,7 +52,7 @@
                 <input type="hidden" value="{{$next_weapon->price}}" name="price">
                 <input type="hidden" value="{{$current_player->ID}}" name="playerID">
                 <input type="hidden" value="{{$current_player->money}}" name="money">
-                <input type="submit" value="Upgrade">
+                <input type="submit" id='btn' value="Upgrade">
             </form>
         @endif
     </div>
@@ -75,7 +76,7 @@
                 <input type="hidden" value="{{$next_armor->ID}}" name="armorID">
                 <input type="hidden" value="{{$current_player->ID}}" name="playerID">
                 <input type="hidden" value="{{$current_player->money}}" name="money">
-                <input type="submit" value="Upgrade">
+                <input type="submit" id='btn' value="Upgrade">
             </form>
         @endif
     </div>
