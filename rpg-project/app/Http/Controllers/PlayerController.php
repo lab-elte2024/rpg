@@ -36,10 +36,11 @@ class PlayerController extends Controller
             'speed' => $classData->speed,
             'weaponID' => $data['weaponID'],
             'armorID' => $data['armorID'],
-            'userID' => $data['userID'],
+            'userID' => $data['userID']+1,
             'skill1_ID' => $skillsT[0],
             'skill2_ID' => $skillsT[1],
             'skill3_ID' => $skillsT[2],
+            'isCounter' => $classData->counter,
           ]);
     }
 
