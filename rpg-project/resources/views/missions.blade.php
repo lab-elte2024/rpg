@@ -15,7 +15,7 @@
     <div class="parent">
         <div class="div1">jelenlegi küldetésed</div>
         <div class="div2">teljesített küldetéseid</div>
-        <div class="div4"><a href="/village">exit</a></div>
+        <div class="div4"><a href="/village" id ="btn">exit</a></div>
     </div>
 
     <ul class="mission-list">
@@ -24,7 +24,7 @@
                 <form method="POST" action="sorting">
                     @csrf
                     <input type="hidden" name="missionID" value="{{ $mission->id }}">
-                    <input type="submit"value="{{ $mission->name }}">
+                    <input type="submit" value="{{ $mission->name }}">
                 </form>
             </li>
         @endforeach

@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
         <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+
 
     <title>Document</title>
 </head>
@@ -21,12 +22,16 @@
                 <input type="text" name="username">
                 <input type="text" name="password"><br>
 
-                <input type="submit"  value="Login" id="btn">
+                <input type="submit"  value="Login" id="btn"><br>
+                <a href="/registration" id ="btn">Regisztráció</a>
+
             </form>
         </div>
     </div>
 
 
 </body>
+
+
 
 </html>

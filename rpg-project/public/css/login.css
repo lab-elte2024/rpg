@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jaro:opsz@6..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jacquard+24&family=Jaro:opsz@6..72&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jacquard+24&family=Jaini&family=Jaro:opsz@6..72&display=swap');
 
 .parent {
     text-align: center;
@@ -11,4 +12,18 @@
 
     .div1 { grid-area: 2 / 3 / 3 / 4; }
     .div2 { grid-area: 4 / 3 / 5 / 4; }
+
+
+    a{
+        font-family: "Jacquard 24";
+        background-color: lightgray;
+        margin: 101px;
+    }
+
+a:hover{
+    background-color: #5C4033; /* Sötétebb zöld */
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
 
