@@ -83,6 +83,11 @@
 </body>
 
 <script>
+    var totalDMG = 0;
+    var money = 0;
+    var rounds = 0;
+    var enemyAttack = {{$eDmg}};
+
     function tryToflee() {
         $speed = {{ $player->speed }};
 
@@ -116,8 +121,9 @@
             enemyHP -= dmg;
 
             if (eC == 1) {
+                totalDMG += enemyAttack;
                 playerHP = document.getElementById('hp_bar').value * 1;
-                playerHP -= {{$eCdmg}};
+                playerHP -= enemyAttack;
                 document.getElementById('hp_bar').value = playerHP;
             }
 
@@ -148,12 +154,12 @@
         var playerHP = document.getElementById('hp_bar').value * 1;
 
         if (enemyHP > 0) {
-            var enemyAttack = {{$eDmg}}};
+
 
             var pC = {{ $pCounter }};
             //var playerDamage = {{ $attack }} + ({{ $speed }} / 2);
             playerHP -= enemyAttack;
-
+            totalDMG  += enemyAttack;
 
             if (pC == 1) {
                 enemyHP -= {{$pCdmg}};
@@ -168,7 +174,7 @@
                 alert('Vesztettél!');
             }
 
-
+        }
     }
 
         function GameOver(eredmeny) {
@@ -178,8 +184,9 @@
                 //kell egy graveyard ahova a player kerul ha meghal
             } else {
                 //win
-                //az xp keplete: ????
-                //penz random (?)
+                xp = (100 - (totalDMG - rounds));
+                money = Math.floor(Math.random() * 30) + 10;
+                alert(xp);
                 //update hp a playernek/mission status
             }
 
