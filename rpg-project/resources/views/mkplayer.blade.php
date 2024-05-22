@@ -57,6 +57,7 @@
 
 
                         @endphp
+                        <img src="{{ asset('images/classes/'.$classID.".png") }}"alt="kep">
                         <input type="hidden" value={{$classID}} name="classID">
                         <input type="hidden" value={{$user_id}} name="userID">
                         Kasztod:{{ $name }}<br>

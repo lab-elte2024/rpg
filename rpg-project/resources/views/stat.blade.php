@@ -27,7 +27,7 @@
 
         @endphp
         <div class="parent">
-            <div class="karakter">Karakter </div>
+            <div class="karakter"><img src="{{ asset('images/classes/'.$p->classID.".png") }}"alt="kep"></div>
             <div class="fegyver">{{ $weapon->name }} </div>
             <div class="pancel">{{ $armor->name }} </div>
             <div class="tp">

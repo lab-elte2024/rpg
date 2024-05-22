@@ -246,15 +246,18 @@
 
     function GameOver(eredmeny, totalDMG, rounds) {
     if (eredmeny == 0) {
-        // Lose
-        // Handle the losing condition, e.g., update UI or send data to server if necessary
+
     } else {
         // Win
-        let xp = (100 - (totalDMG - rounds));
-        let money = Math.floor(Math.random() * 30) + 10;
+        if (isNaN(xp)) {
+            xp = (100 - (totalDMG*1 - rounds*1));
+        }
+
+        var xp = (100 - (totalDMG*1 - rounds*1));
+        var money = Math.floor(Math.random() * 30) + 10;
 
 
-        document.getElementById('xpInput').value = xp;
+        document.getElementById('xpInput').value = xp*1;
         document.getElementById('moneyInput').value = money;
         document.getElementById('hpInput').value = playerHP;
 

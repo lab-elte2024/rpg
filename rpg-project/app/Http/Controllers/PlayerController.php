@@ -98,7 +98,7 @@ class PlayerController extends Controller
             $spd = $data['speed'];
             $tp = $data['tpoint'];
             $maxHP = $data['maxHP'];
-            $playerId = $data['playerID'];axios
+            $playerId = $data['playerID'];
 
 
 
@@ -121,7 +121,7 @@ class PlayerController extends Controller
 
     public function afterWin(Request $request)
     {
-        // Validate and process the data
+
         $data = $request->all();
         $money = $data['money'];
         $xp = $data['xp'];
