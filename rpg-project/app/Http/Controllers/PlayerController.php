@@ -50,6 +50,16 @@ class PlayerController extends Controller
 
     public function mk_player(Request $request) {
         $data = $request->all();
+        $userId = session('ID');
+
+
+        $existingPlayer = DB::table('players')->where('userID', $userId)->first();
+
+
+        if ($existingPlayer) {
+            DB::table('players')->where('userID', $userId)->delete();
+        }
+
         $check = $this->create($data);
 
         return redirect("menu");
