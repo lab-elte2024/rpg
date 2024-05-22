@@ -83,4 +83,8 @@ Route::post('/update', [PlayerController::class, 'update']);
 
 
 
+Route::post('/afterWin', [PlayerController::class, 'afterWin']);
+
+
+
 ///////////////////////////////

@@ -14,7 +14,6 @@ class Skills extends Model
         'damage',
         'cooldown',
         'pictureID',
-        'level_req',
         'is_healing',
     ];
 

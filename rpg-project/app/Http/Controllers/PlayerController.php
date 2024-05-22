@@ -36,7 +36,7 @@ class PlayerController extends Controller
             'speed' => $classData->speed,
             'weaponID' => $data['weaponID'],
             'armorID' => $data['armorID'],
-            'userID' => $data['userID']+1,
+            'userID' => $data['userID'],
             'skill1_ID' => $skillsT[0],
             'skill2_ID' => $skillsT[1],
             'skill3_ID' => $skillsT[2],
@@ -52,7 +52,7 @@ class PlayerController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("login");
+        return redirect("menu");
     }
 
 
@@ -98,7 +98,7 @@ class PlayerController extends Controller
             $spd = $data['speed'];
             $tp = $data['tpoint'];
             $maxHP = $data['maxHP'];
-            $playerId = $data['playerID'];
+            $playerId = $data['playerID'];axios
 
 
 
@@ -119,7 +119,23 @@ class PlayerController extends Controller
 
     }
 
+    public function afterWin(Request $request)
+    {
+        // Validate and process the data
+        $data = $request->all();
+        $money = $data['money'];
+        $xp = $data['xp'];
+        $hp = $data['hp'];
 
+        DB::table('players')
+        ->where('id', session('ID'))
+        ->update([
+            'money' => $money,
+            'xp_count' => $xp,
+            'hp' => $hp,
+        ]);
+
+    }
 
 
 
