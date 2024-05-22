@@ -13,8 +13,8 @@
 
 <body>
     <div class="parent">
-        <div class="div1">jelenlegi küldetésed</div>
-        <div class="div2">teljesített küldetéseid</div>
+        <div class="div1"><h3>küldetéseid:</h3></div>
+        <div class="div2"><h3>teljesített küldetéseid:</h3></div>
         <div class="div4"><a href="/village" id ="btn">exit</a></div>
     </div>
 
