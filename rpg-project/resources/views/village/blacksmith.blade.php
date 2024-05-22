@@ -20,7 +20,7 @@
     $weapons = new App\Models\Weapon();
     $armors = new App\Models\Armor();
 
-    $current_player = $player->getByUserID(session('ID'))->first();
+    $current_player = $player->getByUserID(session('ID'));
 
     $weapon = $weapons->getWeaponByID($current_player->weaponID)->first();
     $armor = $armors->getArmorByID($current_player->armorID)->first();

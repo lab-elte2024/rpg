@@ -21,7 +21,7 @@
         $weapons = new App\Models\Weapon();
         $armors = new App\Models\Armor();
 
-        $player = $players->getByUserID(session('ID'))->first();
+        $player = $players->getByUserID(session('ID'));
 
         foreach ($enemy as $e) {
             $enemyMaxHp = $e->hp;

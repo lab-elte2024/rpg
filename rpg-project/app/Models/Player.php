@@ -58,29 +58,20 @@ class Player extends Model
 
     public function getByUserID($id){
 
-        $pID = DB::table('players')->where('userID',$id)->get();
-        return $pID;
+        $player = DB::table('players')->where('userID', $id)->first();
+        return $player;
 
     }
 
 
-    public function updateStat(){
 
-    }
 
     public function useSkill($skill_ID){
 
         $skill = DB::table('skills')->where('id',$skill_ID)->get();
 
-        //$dmg = $attack + $weapon_damage + ($speed/2);
-
-        //return $dmg;
-
     }
 
-    public function deffend(){
-
-    }
 
 
 }

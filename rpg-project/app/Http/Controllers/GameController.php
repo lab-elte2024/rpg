@@ -55,10 +55,6 @@ class GameController extends Controller
     }
 
     public function loadPlayerStat(){
-        //miután kész a küldi a statust át kell állítani a réginél és betölteni az újat.
-        //0 nincs elkezdve
-        //1 elkezdve
-        //2 befejezve
         $player = Player::where('userID',session('ID'))->get();
 
         foreach($player as $p){
@@ -68,12 +64,6 @@ class GameController extends Controller
         $weapon = Weapon::where('ID',$weaponID)->first();
         $armor = Armor::where('ID',$armorID)->first();
 
-        /*
-        return view('stat')
-        ->with('player',$player)
-        ->with('weapon',$weapon)
-        ->with('armor',$armor);
-        */
 
         return view('stat',compact('player','weapon','armor'));
 

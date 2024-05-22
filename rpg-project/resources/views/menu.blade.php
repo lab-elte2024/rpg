@@ -12,10 +12,17 @@
 </head>
 <body>
     <div class="parent">
+        @php
+            $players = new App\Models\Player();
+            $player = $players->getByUserID(session('ID'));
+        @endphp
+
 
         <div class="div2"><h1>Cím</h1></div>
         <div class="div1" ><a href="/newgame">Új játék</a></div>
+        @if($player)
         <div class="div3" ><a href="/village">Játék folytatása</a></div>
+        @endif
         <div class="div4" ><a href="/logout">Kilépés</a></div>
         </div>
 </body>
