@@ -35,7 +35,8 @@ ul.mission-list li {
 }
 
 ul.mission-list li input[type="submit"] {
-    height: 100px;
+    height: auto;
+
     background-color: lightgrey;
     /* Zöld szín a gombnak */
     border: none;
@@ -44,11 +45,10 @@ ul.mission-list li input[type="submit"] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-    width: 100px;
+    width: auto;
     font-size: 20px;
     align-items: center;
     align-content: center;
@@ -59,8 +59,7 @@ ul.mission-list li input[type="submit"]:hover {
     background-color: #5C4033;
     /* Sötétebb zöld szín hover esetén */
     color: lightgrey;
-    width: 110px;
-    font-size: 22px;
+    font-size: 20px;
 
 
 }
@@ -89,4 +88,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+h3{
+    background-color: #5C4033;
+    color: white;
 }
