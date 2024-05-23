@@ -62,7 +62,7 @@
 
 
     <div class="parent">
-        <div class="div1">player</div>
+        <div class="div1"><img src="{{ asset('images/classes/'.$player->classID.".png") }}"></div>
         <div class="div2"><progress id="hp_bar" value={{ $player->hp }} max={{ $player->maxHP }}></progress>
         </div>
         <div class="div3" id="skill1" onclick="useSkill({{ $skill1->damage }}, {{ $skill1->is_healing }}, {{ $skill1->cooldown }}, 'skill1')">

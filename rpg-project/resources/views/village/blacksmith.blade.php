@@ -39,7 +39,7 @@
 <div class="parent">
 
     <div class="div1">
-        {{$weapon->name}}
+        <img src="{{ asset('images/weapons/'.$current_player->classID."/".$weapon->pictureID.".png") }}">
     </div>
 
     <div class="div2" id="upgrade_weapon">
@@ -59,12 +59,12 @@
 
     <div class="div3">
         @if($next_weapon)
-            {{$next_weapon->name}}
+        <img src="{{ asset('images/weapons/'.$current_player->classID."/".$next_weapon->pictureID.".png") }}">
         @endif
     </div>
 
     <div class="div4">
-        {{$armor->name}}
+        <img src="{{ asset('images/armors/'.$current_player->classID."/".$armor->pictureID.".png") }}">
     </div>
 
     <div class="div5">
@@ -83,7 +83,7 @@
 
     <div class="div6">
         @if($next_armor)
-            {{$next_armor->name}}
+            <img src="{{ asset('images/armors/'.$current_player->classID."/".$next_armor->pictureID.".png") }}">
         @endif
     </div>
     <div class="div7">Pénzed: {{$current_player->money}}$</div>
