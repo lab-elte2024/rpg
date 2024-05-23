@@ -13,4 +13,10 @@
     .div4 { grid-area: 3 / 6 / 4 / 7; }
     .div5 { grid-area: 4 / 1 / 5 / 8; text-align: center; margin-top: 10%}
 
+    body{
+background-image: url('../images/village.jpg');
+    }
 
+a{
+    color: navajowhite;
+}

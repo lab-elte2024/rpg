@@ -23,7 +23,9 @@
                 <input type="text" name="password"><br>
 
                 <input type="submit"  value="Login" id="btn"><br>
-                <a href="/registration" id ="btn">Regisztráció</a>
+                <a href="/registration" id ="btn">Regisztráció</a><br>
+
+                <a href="https://github.com/lab-elte2024/rpg.git" id ="btn">Github</a>
 
             </form>
         </div>

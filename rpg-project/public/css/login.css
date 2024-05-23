@@ -8,22 +8,29 @@
     grid-template-rows: repeat(7, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    }
+}
 
-    .div1 { grid-area: 2 / 3 / 3 / 4; }
-    .div2 { grid-area: 4 / 3 / 5 / 4; }
+.div1 {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.div2 {
+    grid-area: 4 / 3 / 5 / 4;
+}
 
 
-    a{
-        font-family: "Jacquard 24";
-        background-color: lightgray;
-        margin: 101px;
-    }
+a {
+    font-family: "Jacquard 24";
+    background-color: lightgray;
+    margin: 10px;
+    display: block;
+}
 
-a:hover{
+a:hover {
     background-color: #5C4033; /* Sötétebb zöld */
     color: white;
     cursor: pointer;
     text-decoration: none;
 }
+
 

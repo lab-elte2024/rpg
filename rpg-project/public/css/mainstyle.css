@@ -30,10 +30,11 @@ input{
     padding: 10px 20px;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: inline-block;
 }
 
 #btn:hover {
-    background-color: #5C4033; /* Sötétebb zöld */
+    background-color: #5C4033;
     color: white;
     cursor: pointer;
 
