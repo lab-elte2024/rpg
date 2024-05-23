@@ -74,10 +74,7 @@ class PlayerController extends Controller
     }
 
         public function loadPlayerStat(){
-        //miután kész a küldi a statust át kell állítani a réginél és betölteni az újat.
-        //0 nincs elkezdve
-        //1 elkezdve
-        //2 befejezve
+
         $player = Player::where('userID',session('ID'))->get();
 
         foreach($player as $p){
@@ -122,9 +119,6 @@ class PlayerController extends Controller
                 'points' => $tp
             ]);
 
-
-
-
         return redirect('stat');
 
     }
@@ -151,9 +145,31 @@ class PlayerController extends Controller
             'xp_count' => $xp+$currentXP,
             'hp' => $hp,
         ]);
+
         $this->completeQuest($userID,$player->current_mission);
         $this->checkAndLevelUpPlayer($userID,$currentXP);
         return redirect('village');
+
+    }
+
+    function checkAnswer(Request $request){
+
+        $data = $request->all();
+        $answer = $data['answer'];
+
+        $player = DB::table('players')->where('userID', session('ID'))->first();
+
+        $mission = DB::table('missions')->where('id', $player->current_mission)->first();
+
+        $reward = $mission->reward;
+
+        list($xp, $money) = explode(';', $reward);
+
+
+
+        if($answer == $mission->answer){
+            return redirect('village');
+        }
 
     }
 
@@ -178,17 +194,12 @@ class PlayerController extends Controller
         }
     }
 
-    function completeQuest($userID,$mID){
-        $missionID = $mID;
-
-        DB::table('missions')
-            ->where('id',$missionID)
-            ->update([
-                'status' => 1
-            ]);
+    function completeQuest($userID,$xp,$money){
 
 
     }
+
+
 
 
 }

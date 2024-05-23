@@ -32,7 +32,7 @@ class GameController extends Controller
         $player = Player::where('userID',session('ID'))->first();
          $currentMission = $player->current_mission;
         $missions = Missions::where([
-                "status" => 0,
+
                 "pre_id" => $currentMission,
         ])->get();
         return view('missions',compact('missions'));
@@ -55,8 +55,8 @@ class GameController extends Controller
             return view('battle', compact('enemy'));
         }
         if($mission->type == 1){
-
-            return view('logic');
+            $question = $mission->description;
+            return view('logic',compact('question'));
         }
         else{
             return view('talk');

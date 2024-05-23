@@ -41,7 +41,7 @@ class ProblemSolutionMission extends Missions
             'pre_id',
             'name',
             'description',
-            'solution',
+            'answer',
             'reward',
         ];
     }
