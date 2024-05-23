@@ -134,20 +134,61 @@ class PlayerController extends Controller
 
         $data = $request->all();
         $money = $data['money'];
-        $xp = $data['xp'];
+        $xp = (int)$data['xp'];
         $hp = $data['hp'];
+        $userID = session('ID');
+        $player = DB::table('players')->where('userID', $userID)->first();
+        $currentXP = $player->xp_count;
+
+        if($xp <= 0){
+            $xp = 15;
+        }
 
         DB::table('players')
-        ->where('id', session('ID'))
+        ->where('userID', session('ID'))
         ->update([
             'money' => $money,
-            'xp_count' => $xp,
+            'xp_count' => $xp+$currentXP,
             'hp' => $hp,
         ]);
+        $this->completeQuest($userID,$player->current_mission);
+        $this->checkAndLevelUpPlayer($userID,$currentXP);
+        return redirect('village');
 
     }
 
+    private function checkAndLevelUpPlayer($userID,$currentXP)
+    {
 
+        $player = DB::table('players')->where('userID', $userID)->first();
+        $missionID = $player->current_mission;
+        $currentXP = $player->xp_count;
+        $currentLevel = $player->lvl;
+
+
+        if ($currentXP >= 100*$currentLevel) {
+
+            DB::table('players')
+                ->where('userID', $userID)
+                ->update([
+                    'xp_count' => $currentXP - 100*$currentLevel,
+                    'lvl' => $currentLevel + 1,
+                    'points' => $player->points + 3,
+                ]);
+        }
+    }
+
+    function completeQuest($userID,$mID){
+        $missionID = $mID;
+
+        DB::table('missions')
+            ->where('id',$missionID)
+            ->update([
+                'status' => 2
+            ]);
+
+
+    }
 
 
 }

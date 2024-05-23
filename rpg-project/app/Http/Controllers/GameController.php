@@ -37,12 +37,22 @@ class GameController extends Controller
 
         $mission = Missions::where("id",$data['missionID'])->first();
 
+        DB::table('players')
+        ->where('userID', session('ID'))
+        ->update([
+            'current_mission' => $mission->id,
+        ]);
+
         if($mission->type == 0){
             $enemy = Enemy::where('ID',$mission->enemy_id)->get();
             return view('battle', compact('enemy'));
         }
+        if($mission->type == 1){
+
+            return view('logic');
+        }
         else{
-            return view('menu');
+            return view('talk');
         }
     }
 
