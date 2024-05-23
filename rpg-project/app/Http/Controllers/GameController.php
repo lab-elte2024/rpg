@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+
     //sablon ne töröld
     public function index(){
 
@@ -27,7 +28,13 @@ class GameController extends Controller
     }
 
     public function shwMissions(){
-        $missions = Missions::where("status",1)->get();
+
+        $player = Player::where('userID',session('ID'))->first();
+         $currentMission = $player->current_mission;
+        $missions = Missions::where([
+                "status" => 0,
+                "pre_id" => $currentMission,
+        ])->get();
         return view('missions',compact('missions'));
     }
 
@@ -56,13 +63,6 @@ class GameController extends Controller
         }
     }
 
-    public function loadNextMission(){
-        //miután kész a küldi a statust át kell állítani a réginél és betölteni az újat.
-        //0 nincs elkezdve
-        //1 elkezdve
-        //2 befejezve
-
-    }
 
     public function loadPlayerStat(){
         $player = Player::where('userID',session('ID'))->get();

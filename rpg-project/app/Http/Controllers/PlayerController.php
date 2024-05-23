@@ -184,7 +184,7 @@ class PlayerController extends Controller
         DB::table('missions')
             ->where('id',$missionID)
             ->update([
-                'status' => 2
+                'status' => 1
             ]);
 
 
