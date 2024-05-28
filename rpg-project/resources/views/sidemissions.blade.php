@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Küldetések')
+@section('title', 'Mellék küldetések')
 
 @section('content')
     <ul class="mission-list">

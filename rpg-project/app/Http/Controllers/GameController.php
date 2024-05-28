@@ -27,16 +27,23 @@ class GameController extends Controller
         return view('mkplayer');
     }
 
-    public function shwMissions(){
-
-        $player = Player::where('userID',session('ID'))->first();
-         $currentMission = $player->current_mission;
-        $missions = Missions::where([
-
-                "pre_id" => $currentMission,
-        ])->get();
-        return view('missions',compact('missions'));
+    public function shwMissions()
+    {
+        $player = Player::where('userID', session('ID'))->first();
+        $currentMission = $player->current_mission;
+        $missions = Missions::where('pre_id', $currentMission)->get();
+        return view('missions', compact('missions'));
     }
+
+    public function shwSideMissions()
+    {
+        // Assuming similar logic for side missions
+        $player = Player::where('userID', session('ID'))->first();
+        $currentMission = $player->current_mission;
+        $missions = Missions::where('pre_id', $currentMission)->get();
+        return view('sidemissions', compact('missions'));
+    }
+
 
 
     public function sortMission(Request $request){
