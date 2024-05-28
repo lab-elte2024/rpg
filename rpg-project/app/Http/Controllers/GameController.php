@@ -37,7 +37,7 @@ class GameController extends Controller
 
     public function shwSideMissions()
     {
-        // Assuming similar logic for side missions
+
         $player = Player::where('userID', session('ID'))->first();
         $currentMission = $player->current_mission;
         $missions = Missions::where('pre_id', $currentMission)->get();
@@ -54,7 +54,7 @@ class GameController extends Controller
         DB::table('players')
         ->where('userID', session('ID'))
         ->update([
-            'current_mission' => $mission->id,
+            'current_mission' => $mission->missionID,
         ]);
 
         if($mission->type == 0){

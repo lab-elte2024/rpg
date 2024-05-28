@@ -12,6 +12,7 @@ class Missions extends Model
         'pre_id',
         'description',
         'name',
+        'missionID',
     ];
 
     public function player()
