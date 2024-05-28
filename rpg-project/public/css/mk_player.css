@@ -14,8 +14,26 @@
 
     img{
         align-items: center;
-        width: 250px;
-        height: 350px;
+        width: 200px;
+        height: 300px;
         border-radius: 10%;
         border: 5px  solid black;
     }
+
+a:hover {
+    background-color: darkgrey;
+    border: 3px solid black;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;}
+
+a{
+    border: 1px solid black;
+    border-style: wave;
+
+    display: inline-block;
+    width:100px;
+    background-color: grey;
+    align-items: center;
+    text-align: center;
+}

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="{{asset('css/mainstyle.css')}}" rel= "stylesheet">
+            <link href="{{ asset('css/village.css') }}" rel="stylesheet">
+
     <title>Document</title>
-    <link href="{{ asset('css/village.css') }}" rel="stylesheet">
 
 
 </head>
@@ -18,5 +19,7 @@
         <div class="div4" id = "battle"><a href="battle"><h3>test</h3></a></div>
         <div class="div5" id= "stat"><a href="stat"><h3>player stats</h3></a></div>
         </div>
+    <a href= "/menu">Vissza</a>
+
 </body>
 </html>

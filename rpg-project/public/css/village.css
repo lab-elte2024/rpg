@@ -5,18 +5,40 @@
     grid-column-gap: 4px;
     grid-row-gap: 4px;
     text-align: center;
-    }
+}
 
-    .div1 { grid-area: 3 / 2 / 4 / 3; }
-    .div2 { grid-area: 2 / 3 / 3 / 4; }
-    .div3 { grid-area: 2 / 5 / 3 / 6; }
-    .div4 { grid-area: 3 / 6 / 4 / 7; }
-    .div5 { grid-area: 4 / 1 / 5 / 8; text-align: center; margin-top: 10%}
+.div1 {
+    grid-area: 3 / 2 / 4 / 3;
+}
 
-    body{
-background-image: url('../images/village.jpg');
-    }
+.div2 {
+    grid-area: 2 / 3 / 3 / 4;
+}
 
-a{
+.div3 {
+    grid-area: 2 / 5 / 3 / 6;
+}
+
+.div4 {
+    grid-area: 3 / 6 / 4 / 7;
+}
+
+.div5 {
+    grid-area: 4 / 1 / 5 / 8;
+    text-align: center;
+    margin-top: 10%
+}
+
+body {
+    background-image: url('../images/village.jpg');
+}
+
+a {
     color: navajowhite;
+}
+
+a:hover{
+    color: #d1bd8e;
+    text-decoration: underline;
+
 }

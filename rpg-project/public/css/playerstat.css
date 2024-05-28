@@ -1,21 +1,25 @@
+
+
 .parent {
     box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     position: fixed;
     top: 27px;
     width: 100%;
-    display: grid;
     height: calc(100vh - 27px);
-    background: silver;
-    place-items: center;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: px;
-    grid-row-gap: px;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(5, auto);
+    grid-gap: 10px;
     padding: 10px;
-    margin-left: -10px;
-    margin-top: -10px;
+}
+
+.karakter, .fegyver, .pancel, .tp, .stat {
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .karakter {
@@ -28,85 +32,69 @@
 
 .stat {
     grid-area: 2 / 4 / 6 / 7;
-
 }
 
 .pancel {
     grid-area: 4 / 1 / 6 / 2;
-
 }
 
 .fegyver {
     grid-area: 4 / 2 / 6 / 3;
-
 }
 
-.stats{
+img{
+    height: 150%;
+;
+}
+
+.stats {
+
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap:10%;
-    grid-row-gap: 10%;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(4, 60%);
+    grid-gap: 10px;
     place-items: center;
-
 }
 
-.hp_lbl {
-    grid-area: 1 / 1 / 2 / 2;
-
-}
-
-.hp_stat {
-    grid-area: 1 / 2 / 2 / 3;
-}
-
-.hp_btn {
-    grid-area: 1 / 3 / 2 / 4;
-}
-
-.attack_lbl {
-    grid-area: 2 / 1 / 3 / 2;
-
-}
-
-.attack_stat{
-    grid-area: 2 / 2 / 3 / 3;
-
-}
-
-.attack_btn{
-    grid-area: 2 / 3 / 3 / 4;
-}
-
-.defense_lbl{
-    grid-area: 3 / 1 / 4 / 2;
-}
-
-.defense_stat{
-    grid-area: 3 / 2 / 4 / 3;
-}
-
-.defense_btn{
-    grid-area: 3 / 3 / 4 / 4;
-}
-
-.speed_lbl{
-    grid-area: 4 / 1 / 5 / 2;
-}
-
-.speed_stat {
-    grid-area: 4 / 2 / 5 / 3;
-}
-
-.speed_btn {
-    grid-area: 4 / 3 / 5 / 4;
-}
-
-body{
+.stats > div {
     padding: 10px;
-
+    border-radius: 8px;
+    text-align: center;
 }
 
-div:hover   {
-    cursor: default;
+button {
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+form input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+}
+
+a{
+    background-color: grey;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+    border:1px solid black;
+    border-radius: 15px;
 }

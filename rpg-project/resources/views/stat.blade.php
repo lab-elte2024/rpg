@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/playerstat.css') }}" rel="stylesheet">
         <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/playerstat.css') }}" rel="stylesheet">
+
 
 
     <title>Karakter lap</title>
@@ -83,12 +84,16 @@
                         <input type="hidden" name="tpoint" id="tpoint" value="{{$tp}}">
                         <input type="hidden" name="maxHP" id="maxHP" value="{{$maxHP}}">
 
-                        <input type="submit" value="Mentés">
+                        <input type="submit" id = "btn" value="Mentés">
+
                     </form>
+                                                <a href = "/village" >Vissza</a>
+
                 </div>
             </div>
 
         </div>
+
     @endforeach
 
 
@@ -154,6 +159,7 @@
 
                 }
             }
+
             document.getElementById('maxHP').value = maxHP;
             document.getElementById('attack').value = at;
             document.getElementById('defense').value = def;
@@ -163,7 +169,6 @@
 
         }
     </script>
-
 </body>
 
 </html>
