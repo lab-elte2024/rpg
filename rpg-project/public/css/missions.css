@@ -4,6 +4,7 @@
     grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+
 }
 
 .div1 {
@@ -26,11 +27,11 @@
 /* CSS for mission list */
 ul.mission-list {
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
 }
 
 ul.mission-list li {
-    margin-bottom: 10px;
+    margin: 40px;
 }
 
 ul.mission-list li input[type="submit"] {
@@ -47,16 +48,17 @@ ul.mission-list li input[type="submit"] {
     cursor: pointer;
     border-radius: 5px;
     width: auto;
-    font-size: 20px;
+    font-size: 40px;
     align-items: center;
     align-content: center;
+
 
 }
 
 ul.mission-list li input[type="submit"]:hover {
     background-color: #5C4033;
     color: lightgrey;
-    font-size: 20px;
+    font-size: 42px;
 
 
 }
@@ -69,7 +71,6 @@ a{
     font-size: 110%;
     display: block;
     white-space: nowrap;
-
 }
 
 a:hover {
@@ -88,13 +89,21 @@ body {
     width: 80%;
     height: 80%;
     z-index: -1;
-    background-image: url('../images/quest.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 
 h3 {
     background-color: #5C4033;
     color: white;
+}
+
+input[type="submit"] {
+    color: red;
+}
+
+.btn{
+    width: 200%;
 }

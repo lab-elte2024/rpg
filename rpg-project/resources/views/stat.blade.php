@@ -29,7 +29,7 @@
         @endphp
         <div class="parent">
             <div class="karakter"><img src="{{ asset('images/classes/'.$p->classID.".png") }}"alt="kep"></div>
-            <div class="fegyver"><img src="{{ asset('images/weapons/'.$p->classID."/".$weapon->pictureID.".png") }}"></div>
+            <div class="fegyver">ű</div>
             <div class="pancel"><img src="{{ asset('images/armors/'.$p->classID."/".$armor->pictureID.".png") }}"></div>
             <div class="tp">
                 <div id="tp" data-points="{{ $p->points }}">Tapasztalat pontjaid: {{ $p->points }}</div>

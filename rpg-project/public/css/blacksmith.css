@@ -22,3 +22,31 @@
     }
 
 
+a{
+    background-color: #7a8087;
+    border-radius: 15px;
+    padding: 4%;
+    border: 1px solid black;
+    width: auto;
+}
+
+a:hover{
+    background-color: #585f61;
+    padding:5%;
+    border-radius: auto + 10px;
+    text-decoration: none;
+    border: 4px solid black;
+}
+body{
+    margin: 5%;
+    align-items: center;
+}
+
+img{
+    width:40%;
+    border: 1px solid white;
+}
+img:hover{
+    border: 2px solid white;
+
+}
