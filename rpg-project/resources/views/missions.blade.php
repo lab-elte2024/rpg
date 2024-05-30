@@ -10,7 +10,7 @@
                     @csrf
                     <input type="hidden" name="missionID" value="{{ $mission->id }}"><br><br>
                     {{ $mission->description }}<br>
-                    <input type="submit"  id = "btn1" value="{{ $mission->name }}">
+                    <input type="submit" id = "btn1" value="{{ $mission->name }}">
                 </form>
             </li>
         @endforeach

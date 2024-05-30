@@ -8,11 +8,11 @@
 }
 
 .div1 {
-    grid-area: 2 / 2 / 3 / 3;
+    grid-area: 1 / 2 / 3 / 3;
 }
 
 .div2 {
-    grid-area: 3 / 2 / 4 / 3;
+    grid-area: 1 / 5 / 6 / 6;
 }
 
 .div3 {
@@ -21,6 +21,10 @@
 
 .div4 {
     grid-area: 5 / 5 / 6 / 6;
+}
+
+.div5 {
+    grid-area: 7/7/7/7;
 }
 
 
@@ -105,4 +109,9 @@ input[type="submit"] {
 
 .btn {
     width: 200%;
+}
+
+.exit {
+    width: 1%;
+    margin: 10px;
 }

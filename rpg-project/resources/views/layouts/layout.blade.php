@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/missions.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/missions.css') }}" rel="stylesheet">
     <title>@yield('title')</title>
 </head>
 
@@ -18,8 +18,8 @@
         <div class="div2">
             <a href="/sidemission">Mellék küldetéseid</a>
         </div>
-        <div class="div4">
-            <a href="/village" id="btn">exit</a>
+        <div class="div5">
+            <a href="/village" id="exit">exit</a>
         </div>
     </div>
 
