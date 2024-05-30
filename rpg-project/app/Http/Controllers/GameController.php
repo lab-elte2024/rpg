@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Weapon;
 use App\Models\Classes;
 use App\Models\Missions;
+use App\Models\SideMission;
 use App\Models\Player;
 use App\Models\Armor;
 use App\Models\enemy;
@@ -14,6 +15,13 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+    public $missionTable;
+
+    // Constructor to initialize default value
+    public function __construct()
+    {
+        $this->missionTable = 2; // Default value for missionTable
+    }
 
     //sablon ne töröld
     public function index(){
@@ -29,6 +37,7 @@ class GameController extends Controller
 
     public function shwMissions()
     {
+        $this->missionTable = 1;
         $player = Player::where('userID', session('ID'))->first();
         $currentMission = $player->current_mission;
         $missions = Missions::where('pre_id', $currentMission)->get();
@@ -37,10 +46,21 @@ class GameController extends Controller
 
     public function shwSideMissions()
     {
-
+        $id = 0;
+        $this->missionTable = 0;
         $player = Player::where('userID', session('ID'))->first();
-        $currentMission = $player->current_mission;
-        $missions = Missions::where('pre_id', $currentMission)->get();
+        if($player->sideMissionID == 0){
+            $id = rand(1,3);
+
+            DB::table('players')
+            ->where('userID', session('ID'))
+            ->update([
+                'sideMissionID' => $id,
+            ]);
+
+        }
+
+        $missions = SideMission::where('id', $player->sideMissionID)->get();
         return view('sidemissions', compact('missions'));
     }
 
@@ -49,25 +69,51 @@ class GameController extends Controller
     public function sortMission(Request $request){
         $data = $request->all();
 
-        $mission = Missions::where("id",$data['missionID'])->first();
 
-        DB::table('players')
-        ->where('userID', session('ID'))
-        ->update([
-            'current_mission' => $mission->missionID,
-        ]);
+        if($this->missionTable == 1){
+            $mission = Missions::where("id",$data['missionID'])->first();
 
-        if($mission->type == 0){
-            $enemy = Enemy::where('ID',$mission->enemy_id)->get();
-            return view('battle', compact('enemy'));
-        }
-        if($mission->type == 1){
-            $question = $mission->description;
-            return view('logic',compact('question'));
+            DB::table('players')
+            ->where('userID', session('ID'))
+            ->update([
+                'current_mission' => $mission->missionID,
+            ]);
+
+            if($mission->type == 0){
+                $enemy = Enemy::where('ID',$mission->enemy_id)->get();
+                return view('battle', compact('enemy'));
+            }
+            if($mission->type == 1){
+                $question = $mission->description;
+                return view('logic',compact('question'));
+            }
+            else{
+                return view('talk');
+            }
         }
         else{
-            return view('talk');
+            $mission = SideMission::where("id",$data['missionID'])->first();
+
+            DB::table('players')
+            ->where('userID', session('ID'))
+            ->update([
+                'SideMissionID' => $mission->missionID,
+            ]);
+
+            if($mission->type == 0){
+                $enemy = Enemy::where('ID',$mission->enemy_id)->get();
+                return view('battle', compact('enemy'));
+            }
+            if($mission->type == 1){
+                $question = $mission->description;
+                return view('logic',compact('question'));
+            }
+            else{
+                return view('talk');
+            }
         }
+
+
     }
 
 

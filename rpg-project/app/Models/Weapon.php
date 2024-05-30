@@ -69,7 +69,13 @@ class Weapon extends Model
         if($price <= $money){
             $weapon = DB::table('players')
             ->where('ID',$id)
-            ->update(['weaponID' => $weaponID]);
+            ->update([
+                'weaponID' => $weaponID,
+                'money' => $money - $price
+            ]);
+
+
+
         }else{
 
         }
