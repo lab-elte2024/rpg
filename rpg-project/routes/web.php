@@ -13,7 +13,7 @@ Route::get('/stat', [GameController::class, 'loadPlayerStat']);
 
 
 Route::get('/', function () {
-    return view('battlev2');
+    return view('auth.login');
 });
 
 

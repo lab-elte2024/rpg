@@ -194,10 +194,6 @@ class PlayerController extends Controller
         }
     }
 
-    function completeQuest($userID,$xp,$money){
-
-
-    }
 
 
 
