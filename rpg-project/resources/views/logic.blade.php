@@ -1,27 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/logic.css') }}" rel="stylesheet">
-
-    <title>logic</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{{ asset('css/logic.css') }}" rel="stylesheet">
+<title>q&a</title>
 </head>
-
 <body>
-
-    {{ $question }}
-
-    <form action="checkAnswer" method="POST">
-        @csrf
-        <input type="text" name="answer">
-        <input type="submit">
-    </form>
-    <a href="/mission" id = "btn"> Vissza </a>
-
+    <a href = "/tavern" >Vissza</a>
+    <div class="question-container">
+        <div class="question">Mi a kedvenc színem?</div>
+      
+        <div class="answers-container">
+          <button class="answer-button">Piros</button>
+          <button class="answer-button">Kék</button>
+          <button class="answer-button">Zöld</button>
+          <button class="answer-button">Sárga</button>
+        </div>
+      </div>
 </body>
-
 </html>
+
