@@ -29,6 +29,13 @@ Route::get('/blacksmith', function () {
     return view('village.blacksmith');
 });
 
+Route::get('/tavern', function () {
+    return view('village.tavern');
+});
+
+Route::get('/logic', function () {
+    return view('logic');
+
 /////////////////////////---- Login ----/////////////////////////////
 Route::get('/login', function () {
     return view('auth.login');
