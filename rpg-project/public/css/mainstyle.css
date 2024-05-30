@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jacquard+24&family=Jaro:opsz@6..72&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jacquard+24&family=Jaini&family=Jaro:opsz@6..72&display=swap');
+
 body {
     background-color: #A0522D;
     font-family: "Jaini";
     font-size: 30pt;
-    margin:auto;
- }
+    margin: auto;
+}
 
-h1{
+h1 {
     font-size: 75pt;
     font-family: "Jaini";
     margin: 0px;
@@ -17,19 +18,20 @@ button {
     font-family: "Jacquard 24";
 }
 
-input{
+input {
     font-size: 40pt;
     border: 3px solid black;
     font-family: "Jacquard 24";
     margin-bottom: 2px;
 }
+
 /* Alap stílus a gombhoz */
 #btn {
     border: 1px solid black;
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: inline-block;
 }
 
@@ -40,21 +42,18 @@ input{
 
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
     text-transform: capitalize;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
     color: white;
+    width: auto;
 }
 
-div{
-    height: 200px    ;
+div {
+    height: 200px;
 }
-
-
-
-

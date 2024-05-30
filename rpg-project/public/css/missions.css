@@ -59,11 +59,9 @@ ul.mission-list li input[type="submit"]:hover {
     background-color: #5C4033;
     color: lightgrey;
     font-size: 42px;
-
-
 }
 
-a{
+a {
     background-color: #5C4033;
     text-decoration: none;
     text-align: center;
@@ -76,6 +74,7 @@ a{
 a:hover {
     border: 1px solid black;
     text-decoration: none;
+    width: 100%;
 }
 
 #btn:hover {
@@ -92,7 +91,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    
+
 }
 
 h3 {
@@ -104,6 +103,6 @@ input[type="submit"] {
     color: red;
 }
 
-.btn{
+.btn {
     width: 200%;
 }

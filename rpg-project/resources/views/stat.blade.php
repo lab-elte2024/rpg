@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/playerstat.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/playerstat.css') }}" rel="stylesheet">
 
 
 
@@ -28,9 +28,12 @@
 
         @endphp
         <div class="parent">
-            <div class="karakter"><img src="{{ asset('images/classes/'.$p->classID.".png") }}"alt="kep"></div>
-            <div class="fegyver">ű</div>
-            <div class="pancel"><img src="{{ asset('images/armors/'.$p->classID."/".$armor->pictureID.".png") }}"></div>
+            <div class="karakter"><img src="{{ asset('images/classes/' . $p->classID . '.png') }}"alt="kep"></div>
+            <div class="fegyver"><img
+                    src="{{ asset('images/weapons/' . $p->classID . '/' . $weapon->pictureID . '.png') }}">
+            </div>
+            <div class="pancel"><img
+                    src="{{ asset('images/armors/' . $p->classID . '/' . $armor->pictureID . '.png') }}"></div>
             <div class="tp">
                 <div id="tp" data-points="{{ $p->points }}">Tapasztalat pontjaid: {{ $p->points }}</div>
 
@@ -78,22 +81,21 @@
                     <form action="/update" method="POST">
                         @csrf
                         <input type="hidden" name="playerID" value="{{ $p->ID }}">
-                        <input type="hidden" name="attack" id="attack" value="{{$at}}">
-                        <input type="hidden" name="defense" id="defense" value="{{$def}}">
-                        <input type="hidden" name="speed" id="speed" value="{{$speed}}">
-                        <input type="hidden" name="tpoint" id="tpoint" value="{{$tp}}">
-                        <input type="hidden" name="maxHP" id="maxHP" value="{{$maxHP}}">
+                        <input type="hidden" name="attack" id="attack" value="{{ $at }}">
+                        <input type="hidden" name="defense" id="defense" value="{{ $def }}">
+                        <input type="hidden" name="speed" id="speed" value="{{ $speed }}">
+                        <input type="hidden" name="tpoint" id="tpoint" value="{{ $tp }}">
+                        <input type="hidden" name="maxHP" id="maxHP" value="{{ $maxHP }}">
 
                         <input type="submit" id = "btn" value="Mentés">
 
                     </form>
-                                                <a href = "/village" >Vissza</a>
+                    <a href = "/village">Vissza</a>
 
                 </div>
             </div>
 
         </div>
-
     @endforeach
 
 

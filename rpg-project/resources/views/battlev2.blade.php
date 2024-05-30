@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
 
     <title>Figth</title>
 </head>
+
 <body>
     @php
         use Illuminate\Support\Facades\DB;
@@ -29,13 +31,14 @@
         <div class="div2">enemy health </div>
         <div class="div3">try to flee </div>
         <div class="div4">end turn </div>
-        <div class="div5">{{$skill1->name}} </div>
-        <div class="div6">{{$skill2->name}} </div>
-        <div class="div7">{{$skill3->name}} </div>
-        <div class="div8"><progress id="hp_bar" value={{$player->hp}} max={{$player->maxHP}}></progress></div>
-        <div class="div9">player </div>
+        <div class="div5">{{ $skill1->name }} </div>
+        <div class="div6">{{ $skill2->name }} </div>
+        <div class="div7">{{ $skill3->name }} </div>
+        <div class="div8"><progress id="hp_bar" value={{ $player->hp }} max={{ $player->maxHP }}></progress>
         </div>
+        <div class="div9">player </div>
+    </div>
 
 </body>
-</html>
 
+</html>
