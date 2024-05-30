@@ -29,13 +29,13 @@ Route::get('/blacksmith', function () {
     return view('village.blacksmith');
 });
 
-Route::get('/tavern', function () {
-    return view('village.tavern');
-});
+Route::get('/tavern', [GameController::class, 'loadTavern']);
+
+Route::post('/heal', [PlayerController::class, 'healPlayer'])->name('heal');
 
 Route::get('/logic', function () {
     return view('logic');
-
+});
 /////////////////////////---- Login ----/////////////////////////////
 Route::get('/login', function () {
     return view('auth.login');

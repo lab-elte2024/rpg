@@ -16,10 +16,18 @@
 </head>
 <body>
 
+
+
 </body>
+
     <div class="parent">
         <div class="div1">
-            <button><h1>Sör</h1></button>
+            <form action="{{route('heal')}}" method="POST">
+                @csrf
+                <button><h1>Sör 10$ (5 életerő pont)</h1></button><br>
+                Pénzed: {{ $money }}
+            </form>
+
         </div>
         <div class="div2">
             <button><a href="logic"><h1>JÁTÉKGÉP</h1></a></button>
@@ -27,7 +35,7 @@
         <div class="div3">
             <a href = "/village" >Vissza</a>
         </div>
-        
+
     </div>
-    
+
 </html>

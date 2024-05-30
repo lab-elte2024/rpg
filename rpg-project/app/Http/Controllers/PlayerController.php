@@ -126,6 +126,7 @@ class PlayerController extends Controller
     public function afterWin(Request $request)
     {
 
+
         $data = $request->all();
         $money = $data['money'];
         $xp = (int)$data['xp'];
@@ -167,6 +168,7 @@ class PlayerController extends Controller
 
 
 
+
         if($answer == $mission->answer){
             return redirect('village');
         }
@@ -194,7 +196,20 @@ class PlayerController extends Controller
         }
     }
 
+    private function healPlayer(){
+        $player = Player::where('userID', session('ID'))->first();
 
+        if ($player->money >= 10 && $player->hp < $player->maxHP) {
+            DB::table('players')
+            ->where('userID', session('ID'))
+            ->update([
+                'money' => $player->money - 10,
+                'hp' => $player->hp + 5,
+            ]);
+        }
+
+        return redirect('tavern');
+    }
 
 
 

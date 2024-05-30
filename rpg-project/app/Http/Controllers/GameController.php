@@ -17,10 +17,10 @@ class GameController extends Controller
 {
     public $missionTable;
 
-    // Constructor to initialize default value
+
     public function __construct()
     {
-        $this->missionTable = 2; // Default value for missionTable
+        $this->missionTable = 2;
     }
 
     //sablon ne töröld
@@ -106,6 +106,7 @@ class GameController extends Controller
             }
             if($mission->type == 1){
                 $question = $mission->description;
+
                 return view('logic',compact('question'));
             }
             else{
@@ -131,5 +132,17 @@ class GameController extends Controller
         return view('stat',compact('player','weapon','armor'));
 
     }
+
+    function loadTavern(){
+
+        $player = Player::where('userID',session('ID'))->first();
+        $money = $player->money;
+
+
+
+        return view('village.tavern',['money' => $money]);
+    }
+
+
 
 }

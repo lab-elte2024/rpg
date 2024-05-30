@@ -18,8 +18,6 @@ class SideMission extends Model
         'name',
         'type',
         'enemy_id',
-        'description',
-        'solution',
-        'reward'
+        'description'
     ];
 }
