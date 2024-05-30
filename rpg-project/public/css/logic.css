@@ -1,16 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jacquard+24&family=Jaro:opsz@6..72&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&family=Jacquard+12+Charted&family=Jacquard+24&family=Jaini&family=Jaro:opsz@6..72&display=swap');
-
-body{
-    align-items: center;
+body {
+    font-family: Arial, sans-serif;
     text-align: center;
-}
+    background-image: url('../images/tavern_bg.jpg');
+  }
+  .question-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 6rem;
+    text-align: center;
+    background-color: rgba(128, 121, 101, 0.712);
+    padding: 20px;
+    border-radius: 5%;
+  }
+  .question {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: aliceblue;
+  }
+  .answers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .answer-button {
+    width: calc(50% - 20px);
+    margin: 10px;
+    padding: 10px;
+    font-size: 22px;
+    background-color: #a76e05;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .answer-button:hover {
+    background-color: #bda147;
+  }
 
-a{
-    background-color: grey;
-    font-family: "Jaini";
-}
+  a {
+    background: transparent;
+    border: 0cap;
+    color: aliceblue;
+    font-size: 40pt;
 
-a:hover{
-    text-decoration: none;
+    font-family: "Jacquard 24";
 }
