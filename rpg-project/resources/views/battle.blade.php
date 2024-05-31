@@ -60,9 +60,10 @@
 
     @endphp
 
-
+<a href= "/mission">Vissza</a>
     <div class="parent">
-        <div class="div1"><img src="{{ asset('images/classes/' . $player->classID . '.png') }}"></div>
+        <div class="div1"><img id="karakterkep" src="{{ asset('images/classes/' . $player->classID . '.png') }}">
+        </div>
         <div class="div2"><progress id="hp_bar" value={{ $player->hp }} max={{ $player->maxHP }}></progress>
         </div>
         <div class="div3" id="skill1"

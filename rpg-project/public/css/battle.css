@@ -1,7 +1,7 @@
 .parent {
     display: grid;
     grid-template-columns: repeat(6, 0.5fr);
-    grid-template-rows: repeat(5, 0.5fr);
+    grid-template-rows: repeat(6, 0.5fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
@@ -15,23 +15,23 @@
 }
 
 .div3 {
-    grid-area: 5 / 1 / 6 / 2;
+    grid-area: 5 / 1 / 5 / 2;
 }
 
 .div4 {
-    grid-area: 5 / 2 / 6 / 3;
+    grid-area: 5 / 2 / 5 / 3;
 }
 
 .div5 {
-    grid-area: 5 / 3 / 6 / 4;
+    grid-area: 5 / 3 / 5 / 4;
 }
 
 .div6 {
-    grid-area: 5 / 5 / 6 / 6;
+    grid-area: 6 / 4 / 5 / 5;
 }
 
 .div7 {
-    grid-area: 5 / 6 / 6 / 7;
+    grid-area: 6 / 5 / 5 / 6;
 }
 
 .div8 {
@@ -43,20 +43,51 @@
 }
 
 
-
 img {
     border: 4px solid black;
-    width: 100px;
+    cursor: pointer;
+}
+
+img:hover {
+    border: 6px solid black
+}
+
+.karakterkep {
+    border: 6px solid black;
+    cursor: default;
+}
+
+.karakterkep:hover {
+    border: 6px solid black;
 
 }
 
+
 div {
-    margin: 50px;
+    margin: 20px;
     padding-bottom: 10px;
     text-align: center;
 }
 
 progress {
+    width: 100%;
+    height: 30px;
+    appearance: none;
+    /* Eltávolítja az alapértelmezett böngésző stílust */
+}
+
+.div6,
+.div7 {
+    background-color: rgb(122, 128, 135);
+    cursor: pointer;
+    border: 3px solid black;
+
+    border-radius: 15px;
+    width: auto;
     height: 50%;
-    margin-bottom: 100px;
+}
+
+.div6:hover,
+.div7:hover {
+    background-color: rgb(88, 95, 97);
 }

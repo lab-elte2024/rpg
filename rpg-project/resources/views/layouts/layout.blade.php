@@ -19,7 +19,7 @@
             <a href="/sidemission">Mellék küldetéseid</a>
         </div>
         <div class="div5">
-            <a href="/village" id="exit">exit</a>
+            <a href="/village" id="exit">Vissza</a>
         </div>
     </div>
 

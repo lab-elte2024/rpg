@@ -27,6 +27,8 @@
             $tp = $p->points;
 
         @endphp
+        <a href = "/village">Vissza</a>
+
         <div class="parent">
             <div class="karakter"><img src="{{ asset('images/classes/' . $p->classID . '.png') }}"alt="kep"></div>
             <div class="fegyver"><img
@@ -90,7 +92,6 @@
                         <input type="submit" id = "btn" value="Mentés">
 
                     </form>
-                    <a href = "/village">Vissza</a>
 
                 </div>
             </div>

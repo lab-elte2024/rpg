@@ -36,6 +36,11 @@ Route::post('/heal', [PlayerController::class, 'healPlayer'])->name('heal');
 Route::get('/logic', function () {
     return view('logic');
 });
+
+Route::get('/graveyard', function () {
+    return view('graveyard');
+});
+
 /////////////////////////---- Login ----/////////////////////////////
 Route::get('/login', function () {
     return view('auth.login');
