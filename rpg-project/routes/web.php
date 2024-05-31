@@ -94,7 +94,7 @@ Route::post('/update', [PlayerController::class, 'update']);
 
 Route::post('/afterWin', [PlayerController::class, 'afterWin']);
 
-Route::post('/checkAnswer', [PlayerController::class, 'checkAnswer']);
+Route::post('/check-answer', [PlayerController::class, 'checkAnswer'])->name('checkAnswer');
 
 
 

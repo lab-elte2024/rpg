@@ -38,6 +38,7 @@ class GameController extends Controller
     public function shwMissions()
     {
         $this->missionTable = 1;
+        error_log($this->missionTable);
         $player = Player::where('userID', session('ID'))->first();
         $currentMission = $player->current_mission;
         $missions = Missions::where('pre_id', $currentMission)->get();
@@ -48,9 +49,10 @@ class GameController extends Controller
     {
         $id = 0;
         $this->missionTable = 0;
+        error_log($this->missionTable);
         $player = Player::where('userID', session('ID'))->first();
         if($player->sideMissionID == 0){
-            $id = rand(1,3);
+            $id = rand(1,2);
 
             DB::table('players')
             ->where('userID', session('ID'))
@@ -70,7 +72,7 @@ class GameController extends Controller
         $data = $request->all();
 
 
-        if($this->missionTable == 1){
+       // if($this->missionTable == 1){
             $mission = Missions::where("id",$data['missionID'])->first();
 
             DB::table('players')
@@ -84,14 +86,14 @@ class GameController extends Controller
                 return view('battle', compact('enemy'));
             }
             if($mission->type == 1){
-                $question = $mission->description;
-                return view('logic',compact('question'));
+                $id = $mission->id;
+                return view('logic',['id' => $id]);
             }
             else{
                 return view('talk');
             }
         }
-        else{
+       /* else{
             $mission = SideMission::where("id",$data['missionID'])->first();
 
             DB::table('players')
@@ -113,9 +115,9 @@ class GameController extends Controller
                 return view('talk');
             }
         }
+*/
 
 
-    }
 
 
     public function loadPlayerStat(){

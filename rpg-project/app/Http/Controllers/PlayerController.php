@@ -153,26 +153,37 @@ class PlayerController extends Controller
 
     }
 
-    function checkAnswer(Request $request){
-
+    public function checkAnswer(Request $request)
+    {
         $data = $request->all();
         $answer = $data['answer'];
 
         $player = DB::table('players')->where('userID', session('ID'))->first();
 
-        $mission = DB::table('missions')->where('id', $player->current_mission)->first();
+        if ($player) {
+            $mission = DB::table('missions')->where('id', $player->current_mission)->first();
 
-        $reward = $mission->reward;
+            if ($mission) {
+                $reward = $mission->reward;
+                list($xp, $money) = explode(';', $reward);
 
-        list($xp, $money) = explode(';', $reward);
+                if ($answer == $mission->answer) {
+                    // Add the reward to the player's account
+                    DB::table('players')->where('userID', session('ID'))->update([
+                        'xp_count' => $player->xp_count + $xp,
+                        'money' => $player->money + $money,
+                    ]);
 
-
-
-
-        if($answer == $mission->answer){
-            return redirect('village');
+                    return redirect('village');
+                } else {
+                    return back()->with('error', 'Incorrect answer, please try again.');
+                }
+            } else {
+                return back()->with('error', 'Mission not found.');
+            }
+        } else {
+            return back()->with('error', 'Player not found.');
         }
-
     }
 
     private function checkAndLevelUpPlayer($userID,$currentXP)
@@ -196,7 +207,7 @@ class PlayerController extends Controller
         }
     }
 
-    private function healPlayer(){
+    public function healPlayer(){
         $player = Player::where('userID', session('ID'))->first();
 
         if ($player->money >= 10 && $player->hp < $player->maxHP) {
