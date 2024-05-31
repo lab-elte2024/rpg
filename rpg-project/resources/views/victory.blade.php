@@ -21,6 +21,6 @@
     </style>
 </head>
 <body>
-    <h1>Gratulálok, nyertél!</h1>
+    <h1>Gratulálok, megszabadítottad a falut a Górf árnyéka alól!</h1>
 </body>
 </html>

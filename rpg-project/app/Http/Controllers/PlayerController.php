@@ -145,6 +145,11 @@ class PlayerController extends Controller
 
 
         $this->checkAndLevelUpPlayer($userID,$currentXP);
+
+        if($player->current_mission == 13){
+            return redirect('victory');
+        }
+
         return redirect('village');
 
     }
