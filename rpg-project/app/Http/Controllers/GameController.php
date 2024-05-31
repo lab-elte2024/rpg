@@ -34,6 +34,11 @@ class GameController extends Controller
         error_log($this->missionTable);
         $player = Player::where('userID', session('ID'))->first();
         $currentMission = $player->current_mission;
+
+        if($currentMission == 13){
+            return view('victory');
+        }
+
         $missions = Missions::where('pre_id', $currentMission)->get();
         return view('missions', compact('missions'));
     }

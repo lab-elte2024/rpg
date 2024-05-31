@@ -41,6 +41,10 @@ Route::get('/graveyard', function () {
     return view('graveyard');
 });
 
+Route::get('/victory', function () {
+    return view('victory');
+});
+
 /////////////////////////---- Login ----/////////////////////////////
 Route::get('/login', function () {
     return view('auth.login');
