@@ -16,14 +16,14 @@
             1 => 'Eltereled az őr figyelmét, hogyan hajtod végre?',
             2 => 'Ki vagy te?',
             3 => 'Hova rejtözől?',
-            4 => 'Megvesztegeted?',
+            4 => 'Merre próbálsz beosonni?',
         ];
 
         $answers = [
-            1 => ['Elhajítasz egy követ', 'Kék', 'Zöld', 'Sárga'],
-            2 => ['Oroszlán', 'Bátor', 'Nyúlszívű', 'Rettenthetetlen'],
-            3 => ['Üres', 'Ládányi hal közé', 'Kardokkal teli hordó', 'Egy zsákba'],
-            4 => ['Üres', 'Ládányi hal közé', 'Kardokkal teli hordó', 'Egy zsákba'],
+            1 => ['Elhajítasz egy követ', 'Fütyszóval', 'Hangutánzással', 'Nem csinálsz semmit'],
+            2 => ['A pizzafutár', 'Barát', 'Egy közületek, nem ismersz meg?', 'Nem látsz a szemedtől?'],
+            3 => ['Üres hordóba', 'Ládányi hal közé', 'Kardokkal teli hordó', 'Egy zsákba'],
+            4 => ['Ablakon', 'Kis ajtón', 'Az őr mellett', 'Haza mész inkább'],
         ];
 
         $currentAnswers = [];

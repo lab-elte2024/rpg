@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Skills;
+use App\Models\Enemy;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\RedirectResponse;
 
@@ -147,7 +148,7 @@ class PlayerController extends Controller
             'hp' => $hp,
         ]);
 
-        $this->completeQuest($userID,$player->current_mission);
+
         $this->checkAndLevelUpPlayer($userID,$currentXP);
         return redirect('village');
 
@@ -161,14 +162,15 @@ class PlayerController extends Controller
         $player = DB::table('players')->where('userID', session('ID'))->first();
 
         if ($player) {
-            $mission = DB::table('missions')->where('id', $player->current_mission)->first();
+            $mission = DB::table('missions')
+            ->where('missionID', $player->current_mission)
+            ->where('type', 1)
+            ->first();
 
             if ($mission) {
-                $reward = $mission->reward;
-                list($xp, $money) = explode(';', $reward);
-
                 if ($answer == $mission->answer) {
-                    // Add the reward to the player's account
+                    $reward = $mission->reward;
+                    list($xp, $money) = explode(';', $reward);
                     DB::table('players')->where('userID', session('ID'))->update([
                         'xp_count' => $player->xp_count + $xp,
                         'money' => $player->money + $money,
@@ -176,7 +178,14 @@ class PlayerController extends Controller
 
                     return redirect('village');
                 } else {
-                    return back()->with('error', 'Incorrect answer, please try again.');
+
+                    $fightMission = DB::table('missions')
+                    ->where('missionID', $player->current_mission)
+                    ->where('type', 0)
+                    ->first();
+
+                    $enemy = Enemy::where('ID', $fightMission->enemy_id)->get();
+                    return view('battle', compact('enemy'));
                 }
             } else {
                 return back()->with('error', 'Mission not found.');

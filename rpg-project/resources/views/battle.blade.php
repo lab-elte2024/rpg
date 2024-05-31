@@ -28,6 +28,7 @@
             $enemyMaxHp = $e->hp;
             $enemyHp = $e->hp;
             $enemyName = $e->name;
+            $enemyPicture = $e->pictureID;
             $eCounter = $e->isCounter;
             $eSpd = $e->speed;
             $eAt = $e->attack;
@@ -80,7 +81,7 @@
         </div>
         <div class="div6" onclick="endTurn()">end turn </div>
         <div class="div7" onclick="tryToflee()" id="flee">try to flee</div>
-        <div class="div8">{{ $enemyName }}</div>
+        <div class="div8"><img id="karakterkep" src="{{ asset('images/enemies/' . $enemyPicture. '.png') }}"></div>
         <div class="div9"><progress id="ehp_bar" value={{ $enemyHp }} max={{ $enemyMaxHp }}></progress>
         </div>
     </div>
