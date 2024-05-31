@@ -104,3 +104,5 @@ Route::post('/check-answer', [PlayerController::class, 'checkAnswer'])->name('ch
 
 
 ///////////////////////////////
+
+Route::post('/delete-character', [PlayerController::class, 'deleteCharacter'])->name('delete-character');

@@ -12,6 +12,9 @@
 <body>
     <div class="parent">
         <div class="div1">Meghaltál!</div>
-        <div class="div2"><button><a href="">Új játék</a></button></div>
+        <form action="{{ route('delete-character') }}" method="POST">
+            @csrf
+            <button type="submit">Új játék</button>
+        </form>
     </div>
 </html>

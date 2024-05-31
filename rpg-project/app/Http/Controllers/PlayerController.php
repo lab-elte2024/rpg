@@ -232,5 +232,12 @@ class PlayerController extends Controller
     }
 
 
+    public function deleteCharacter(Request $request)
+    {
+            DB::table('players')->where('userID', session('ID'))->delete();
+            return redirect('menu');
+
+    }
+
 
 }

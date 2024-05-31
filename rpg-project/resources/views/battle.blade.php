@@ -220,7 +220,7 @@
             document.getElementById('hp_bar').value = playerHP;
 
             if (playerHP <= 0) {
-                alert('Vesztettél!');
+                alert('Meghaltál!');
                 GameOver(0);
                 return;
             }
@@ -238,6 +238,7 @@
     function GameOver(eredmeny) {
         if (eredmeny == 0) {
             // Vesztettél
+            window.location.href = '/graveyard';
         } else {
             // Win
             var xp = (100 - (totalDMG - rounds));
