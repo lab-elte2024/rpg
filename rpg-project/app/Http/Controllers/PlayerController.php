@@ -37,7 +37,7 @@ class PlayerController extends Controller
             'speed' => $classData->speed,
             'weaponID' => $data['weaponID'],
             'armorID' => $data['armorID'],
-            'userID' => $data['userID'],
+            'userID' => session('ID'),
             'skill1_ID' => $skillsT[0],
             'skill2_ID' => $skillsT[1],
             'skill3_ID' => $skillsT[2],
@@ -63,7 +63,7 @@ class PlayerController extends Controller
 
         $check = $this->create($data);
 
-        return redirect("menu");
+        return redirect("village");
     }
 
 
@@ -85,12 +85,7 @@ class PlayerController extends Controller
         $weapon = Weapon::where('ID',$weaponID)->first();
         $armor = Armor::where('ID',$armorID)->first();
 
-        /*
-        return view('stat')
-        ->with('player',$player)
-        ->with('weapon',$weapon)
-        ->with('armor',$armor);
-        */
+
 
         return view('stat',compact('player','weapon','armor'));
 

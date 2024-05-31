@@ -85,7 +85,6 @@ Route::post('/upgrade_armor', [Armor::class, 'upgrade']);
 //////////////--- Mission ---////////////////
 Route::get('/mission', [GameController::class, 'shwMissions']);
 
-Route::get('/sidemission', [GameController::class, 'shwSideMissions']);
 
 Route::post('/sorting',[GameController::class,'sortMission']);
 

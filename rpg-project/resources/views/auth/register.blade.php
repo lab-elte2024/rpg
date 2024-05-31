@@ -19,7 +19,7 @@
         <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <input type="text" name="username">
-                <input type="text" name="password"><br>
+                <input type="password" name="password"><br>
 
                 <input type="submit" id="btn" value="Regisztráció">
             </form>

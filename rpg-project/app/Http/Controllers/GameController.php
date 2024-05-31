@@ -23,13 +23,6 @@ class GameController extends Controller
         $this->missionTable = 2;
     }
 
-    //sablon ne töröld
-    public function index(){
-
-        $weapons = Weapon::where('classID',1)->get(); // Fegyverek lekérése az adatbázisból
-
-        return view('weapons', compact('weapons')); // Nézet átadása a fegyverek listájával
-    }
 
     public function createPlayer(){
         return view('mkplayer');
@@ -70,9 +63,6 @@ class GameController extends Controller
 
     public function sortMission(Request $request){
         $data = $request->all();
-
-
-       // if($this->missionTable == 1){
             $mission = Missions::where("id",$data['missionID'])->first();
 
             DB::table('players')
@@ -89,33 +79,8 @@ class GameController extends Controller
                 $id = $mission->id;
                 return view('logic',['id' => $id]);
             }
-            else{
-                return view('talk');
-            }
         }
-       /* else{
-            $mission = SideMission::where("id",$data['missionID'])->first();
 
-            DB::table('players')
-            ->where('userID', session('ID'))
-            ->update([
-                'SideMissionID' => $mission->missionID,
-            ]);
-
-            if($mission->type == 0){
-                $enemy = Enemy::where('ID',$mission->enemy_id)->get();
-                return view('battle', compact('enemy'));
-            }
-            if($mission->type == 1){
-                $question = $mission->description;
-
-                return view('logic',compact('question'));
-            }
-            else{
-                return view('talk');
-            }
-        }
-*/
 
 
 
@@ -139,9 +104,6 @@ class GameController extends Controller
 
         $player = Player::where('userID',session('ID'))->first();
         $money = $player->money;
-
-
-
         return view('village.tavern',['money' => $money]);
     }
 

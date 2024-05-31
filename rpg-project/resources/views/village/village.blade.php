@@ -13,13 +13,13 @@
 </head>
 <body>
     <div class="parent">
-        <div class="div1" id="blacksmith"><a href="blacksmith"> <h3>blacksmith</h3></a></div>
-        <div class="div2" id ="tavern"><a href="tavern"> <h3>tavern</h3></a></div>
-        <div class="div3" id="mission"><a href="mission"><h3>quests</h3></a></div>
-        <div class="div4" id = "battle"><a href="battle"><h3>test</h3></a></div>
-        <div class="div5" id= "stat"><a href="stat"><h3>player stats</h3></a></div>
+        <div class="div1" id="blacksmith"><a href="menu"> <h3>Vissza a menüre</h3></a></div>
+        <div class="div2" id="blacksmith"><a href="blacksmith"> <h3>Kovácsműhely</h3></a></div>
+        <div class="div3" id ="tavern"><a href="tavern"> <h3>Kocsma</h3></a></div>
+        <div class="div4" id="mission"><a href="mission"><h3>Küldetések</h3></a></div>
+        <div class="div5" id= "stat"><a href="stat"><h3>Karaktered</h3></a></div>
         </div>
-    <a href= "/menu">Vissza</a>
+
 
 </body>
 </html>

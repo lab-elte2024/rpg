@@ -42,7 +42,7 @@ class LoginController extends Controller
 
         if($this->is_valid($data['username']) == true) {
             $check = $this->create($data);
-            return redirect("menu")->withSuccess('Great! You have Successfully loggedin');
+            return redirect("login");
         }
 
         else {
